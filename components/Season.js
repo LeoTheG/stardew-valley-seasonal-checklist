@@ -7,16 +7,25 @@ export default class Season extends Component{
         super(props)
         this.state = {
             season: props.season,
-            checks: props.checks
+            checks: props.checks,
+            check: props.check || function(){}
         }
+        this.check = this.check.bind(this)
+    }
+    componentWillReceiveProps(props){
+        if(props.season != this.state.season || props.checks != this.state.checks){
+            this.setState({season: props.season, checks:props.checks})
+        }
+    }
+    check(category, name, checked){
+        this.state.check(this.state.season,category,name,checked)
     }
     render() {
         return (
             <ScrollView>
-                <Text style={styles.header}>{this.state.season}</Text>
-                <CheckList checks={this.state.checks["forage"]} category={"forage"} />
-                <CheckList checks={this.state.checks["farming"]} category={"farming"} />
-                <CheckList checks={this.state.checks["fishing"]} category={"fishing"} />
+                <CheckList check={this.check} checks={this.state.checks["forage"]} category={"forage"} />
+                <CheckList check={this.check} checks={this.state.checks["farming"]} category={"farming"} />
+                <CheckList check={this.check} checks={this.state.checks["fishing"]} category={"fishing"} />
             </ScrollView>
         );
     }

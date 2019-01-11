@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, Button, Alert,
-  TextInput, Picker
+  StyleSheet, View,
+  Picker, AsyncStorage
 } from 'react-native';
 import Check from './components/Check';
 import Season from './components/Season';
@@ -12,18 +12,42 @@ export default class App extends React.Component {
     this.state = {
       text: '',
       language: '',
+      seasons: ["spring", "summer", "fall", "winter"],
+      season: "spring",
       checks: {
         spring: {
           forage: {
-            "Wild Horseradish":{},
-            "Leek": {},
-            "Daffodil": {},
-            "Dandelion": {},
+            "Wild Horseradish": {
+              expanse: {
+                location: "Stardew Valley",
+                bundle: "Spring Foraging",
+                lastChance: true
+              },
+              checked: false
+            },
+            "Leek": {
+              expanse: {
+
+              },
+              checked: false
+            },
+            "Daffodil": {
+              expanse: {
+
+              },
+              checked: false
+            },
+            "Dandelion": {
+              expanse: {
+
+              },
+              checked: false
+            },
             "Morel": {},
             "Common Mushroom": {},
           },
           farming: {
-            "Parsnip":{},
+            "Parsnip": {},
             "Parsnip(Gold Quality) x5": {},
             "Cauliflower": {},
             "Potato": {},
@@ -38,44 +62,79 @@ export default class App extends React.Component {
             "Catfish": {},
             "Shad": {},
           }
+        },
+        summer: {
+          forage: {
+            "Spice Berry": {},
+            "Sweet Pea": {},
+            "Grape": {},
+            "Fiddlehead Fern": {},
+            "Red Mushroom": {},
+          },
+          farming: {
+            "Tomato": {},
+            "Hot Pepper": {},
+            "Blueberry": {},
+          },
+          fishing: {
+
+          }
         }
       }
 
     }
+    this.check = this.check.bind(this)
+    this.storeData = this.storeData.bind(this)
+    this.loadData = this.loadData.bind(this)
+
+    this.loadData()
+  }
+  // used for propagating up changes in checks
+  check(season, category, name, checked) {
+    const newState = Object.assign({}, this.state)
+    newState.checks[season][category][name]["checked"] = checked
+    this.setState(newState, () => {
+      this.storeData()
+    })
+    //this.state.checks[season][category][name]["checked"] = checked
+  }
+  storeData = async () => {
+    try {
+      await AsyncStorage.setItem('checks', JSON.stringify(this.state.checks))
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+  }
+  loadData = async () => {
+    let data = null
+    try {
+      data = await AsyncStorage.getItem('checks')
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+    if (data != null) {
+      this.setState({ checks: JSON.parse(data) })
+    }
   }
   render() {
+    let x = []
+    let count = 0
+    for (const s in this.state.seasons) {
+      x.push(<Picker.Item key={count} label={this.state.seasons[s]} value={this.state.seasons[s]} />)
+      count++
+    }
     return (
       <View>
-        <Season season={"spring"} checks={this.state.checks.spring} />
-      </View>
-      /*
-      <Check name="parsnip" description="forage"/>
-      <View style={styles.container}>
-        <Text>Lmao</Text>
-        <Button onPress={() => {
-          Alert.alert('You tapped the button!');
-        }}
-          title="Press Me"
-        />
-        <TextInput
-          style={{ height: 40 }}
-          placeholder="Type here"
-          onChangeText={(text) => this.setState({ text })}
-        />
-        <Text style={{ padding: 10, fontSize: 42 }}>
-          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-
-        </Text>
-        <Picker
-          selectedValue={this.state.language}
-          style={{ height: 50, width: 300, backgroundColor: "gray" }}
-          onValueChange={(value, index) => this.setState({ language: value })}
+        <Picker style={styles.picker}
+          selectedValue={this.state.season}
+          onValueChange={(value, index) => { this.setState({ season: value }, () => { this.forceUpdate() }) }}
         >
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
+          {x}
         </Picker>
+        <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
       </View>
-    */
     );
   }
 }
@@ -87,4 +146,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  picker: {
+    marginTop: 50,
+    width: 150
+  }
 });
