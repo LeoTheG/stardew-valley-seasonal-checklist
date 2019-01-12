@@ -21,11 +21,23 @@ export default class Season extends Component{
         this.state.check(this.state.season,category,name,checked)
     }
     render() {
+        const x = []
+        let count = 0
+        for(const category in this.state.checks){
+            const c = this.state.checks[category]
+            x.push(
+                <CheckList key={"checklist-"+count} check={this.check} checks={c} category={category} />
+            )
+            count++
+        }
         return (
             <ScrollView>
-                <CheckList check={this.check} checks={this.state.checks["forage"]} category={"forage"} />
+                {x}
+                {/*
+                <CheckList check={this.check} checks={this.state.checks["foraging"]} category={"foraging"} />
                 <CheckList check={this.check} checks={this.state.checks["farming"]} category={"farming"} />
                 <CheckList check={this.check} checks={this.state.checks["fishing"]} category={"fishing"} />
+                */}
             </ScrollView>
         );
     }

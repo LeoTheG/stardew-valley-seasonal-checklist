@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 export default class Check extends Component {
@@ -10,14 +10,16 @@ export default class Check extends Component {
             expanse: props.expanse || {location:"",bundle:"",lastChance:false},
             checked: props.checked || false,
             expanded: false,
-            check: props.check || function(){}
+            check: props.check || function(){},
+            image: props.image
         }
         this.press = this.press.bind(this)
         this.pressExpand = this.pressExpand.bind(this)
     }
     componentWillReceiveProps(props){
         if(props.name != this.state.name || props.checked != this.state.checked){
-            this.setState({name: props.name, expanse: props.expanse, checked: props.checked, expanded: false})
+            this.setState({name: props.name, expanse: props.expanse, checked: props.checked, expanded: false,
+            image: props.image})
         }
     }
     press() {
@@ -41,9 +43,10 @@ export default class Check extends Component {
         return (
             <View>
                 <View style={styles.container}>
+                    <Image style={styles.image} source={this.state.image}/>
                     <CheckBox containerStyle={styles.checkBox} title={this.state.name} checked={this.state.checked} onPress={this.press} iconRight />
                     <View style={styles.textContainer}>
-                        <Text style={styles.text} onPress={this.pressExpand}>{this.state.expanded? "-" : "+"}</Text>
+                        <Text style={styles.plus} onPress={this.pressExpand}>{this.state.expanded? "-" : "+"}</Text>
                     </View>
                 </View>
                 <View style={styles.expanseContainer}>
@@ -61,14 +64,17 @@ const styles = StyleSheet.create({
     checkBox: {
         width: "80%"
     },
-    text: {
+    plus: {
         fontSize: 30,
         textAlign: "center"
     },
     textContainer: {
-        width: "10%"
+        paddingLeft: "1%"
     },
     expanseContainer: {
-        marginLeft: "5%"
+        marginLeft: "10%"
+    },
+    image: {
+        marginTop: 15
     }
 })

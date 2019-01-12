@@ -28,6 +28,7 @@ export default class CheckList extends Component {
                 x.push(<Check key={count} name={c} 
                     expanse={this.state.checks[c].expanse} 
                     checked={this.state.checks[c].checked}
+                    image={this.state.checks[c].image}
                     check={this.check} 
                     />)
                 count++
