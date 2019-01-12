@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Stardew Season Checklist",
-    "slug": "stardew-season-checklist",
+    "name": "Stardew Seasonal Checklist",
+    "slug": "stardew-seasonal-checklist",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -20,7 +20,8 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.aleopowers.stardewseasonchecklist"
+      "package": "com.aleopowers.stardewseasonalchecklist",
+      "permissions": []
     }
   }
 }

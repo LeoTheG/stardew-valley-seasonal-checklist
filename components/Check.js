@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 export default class Check extends Component {
@@ -45,9 +45,9 @@ export default class Check extends Component {
                 <View style={styles.container}>
                     <Image style={styles.image} source={this.state.image}/>
                     <CheckBox containerStyle={styles.checkBox} title={this.state.name} checked={this.state.checked} onPress={this.press} iconRight />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.plus} onPress={this.pressExpand}>{this.state.expanded? "-" : "+"}</Text>
-                    </View>
+                    <TouchableOpacity style={styles.textContainer} onPress={this.pressExpand}>
+                        <Text style={styles.plus} >{this.state.expanded? "-" : "+"}</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.expanseContainer}>
                     {x}
@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
     },
     plus: {
         fontSize: 30,
-        textAlign: "center"
     },
     textContainer: {
-        paddingLeft: "1%"
+        paddingLeft: 0,
+        width: "10%"
     },
     expanseContainer: {
         marginLeft: "10%"

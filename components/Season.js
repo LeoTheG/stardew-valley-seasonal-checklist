@@ -26,7 +26,7 @@ export default class Season extends Component{
         for(const category in this.state.checks){
             const c = this.state.checks[category]
             x.push(
-                <CheckList key={"checklist-"+count} check={this.check} checks={c} category={category} />
+                <CheckList key={"checklist-"+count} check={this.check} checks={c} category={category} season={this.state.season} />
             )
             count++
         }

@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import Check from './components/Check';
 import Season from './components/Season';
+import {AdMobRewarded, AdMobBanner} from 'expo';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -1219,6 +1220,12 @@ export default class App extends React.Component {
           {x}
         </Picker>
         <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
+        <AdMobBanner style={styles.bottomBanner}
+          bannerSize="fullBanner"
+          adUnitID="ca-app-pub-2964072979069071/2820899412"
+          testDeviceID="EMULATOR"
+          onDidFailToReceiveAdWithError={this.bannerError}
+          />
       </View>
     );
   }
@@ -1237,5 +1244,9 @@ const styles = StyleSheet.create({
   picker: {
     marginTop: 50,
     width: 150
-  }
+  },
+  bottomBanner: {
+    position: "absolute",
+    bottom: 0
+  },
 });

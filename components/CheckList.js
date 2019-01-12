@@ -6,6 +6,7 @@ export default class CheckList extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            season: props.season,
             category: props.category || "",
             checks: props.checks, 
             check: props.check || function(){}
@@ -35,10 +36,13 @@ export default class CheckList extends Component {
             }
         }
         else x = <Text>Loading...</Text>
+        let y = (this.state.category==='misc.' || (this.state.category === 'fishing' && (this.state.season==='spring' ||
+        this.state.season==='summer' || this.state.season==='fall' || this.state.season==='winter' ))) ? <View style={styles.bottomBlock}/> : <View/>
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>{this.state.category}</Text>
                 {x}
+                {y}
             </View>
         );
     }
@@ -51,5 +55,8 @@ const styles = StyleSheet.create({
     header: {
         fontSize: 25,
         textAlign: "center"
+    },
+    bottomBlock: {
+        height: 60
     }
 })
