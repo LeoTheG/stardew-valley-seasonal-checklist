@@ -3,9 +3,13 @@ import {
   StyleSheet, View,
   Picker, AsyncStorage
 } from 'react-native';
-import Check from './components/Check';
 import Season from './components/Season';
-import {AdMobRewarded, AdMobBanner} from 'expo';
+import { AdMobBanner } from 'expo';
+import { FontAwesome } from '@expo/vector-icons';
+import { MenuProvider } from 'react-native-popup-menu';
+import Cog from './components/Cog';
+
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -1172,6 +1176,7 @@ export default class App extends React.Component {
     this.check = this.check.bind(this)
     this.storeData = this.storeData.bind(this)
     this.loadData = this.loadData.bind(this)
+    this.resetChecks = this.resetChecks.bind(this)
 
     this.loadData()
   }
@@ -1204,6 +1209,17 @@ export default class App extends React.Component {
       this.setState({ checks: JSON.parse(data) })
     }
   }
+  resetChecks(){
+    console.log("resetting checks")
+    for(const season in this.state.checks){
+      for (const category in this.state.checks[season]) {
+        for (const i in this.state.checks[season][category]){
+          this.state.checks[season][category][i].checked = false
+        }
+      }
+    }
+    this.forceUpdate()
+  }
   render() {
     let x = []
     let count = 0
@@ -1212,22 +1228,29 @@ export default class App extends React.Component {
       count++
     }
     return (
-      <View style={styles.container}>
-        <Picker style={styles.picker}
-          selectedValue={this.state.season}
-          onValueChange={(value, index) => { this.setState({ season: value }, () => { this.forceUpdate() }) }}
-        >
-          {x}
-        </Picker>
-        <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
-        <AdMobBanner style={styles.bottomBanner}
-          bannerSize="fullBanner"
-          //adUnitID="ca-app-pub-2964072979069071/2820899412"
-          adUnitID="ca-app-pub-3940256099942544/6300978111"
-          testDeviceID="EMULATOR"
-          onDidFailToReceiveAdWithError={this.bannerError}
+      <MenuProvider>
+        <View style={styles.container}>
+          <View style={styles.topBar}>
+
+
+            <Picker style={styles.picker}
+              selectedValue={this.state.season}
+              onValueChange={(value, index) => { this.setState({ season: value }, () => { this.forceUpdate() }) }}
+            >
+              {x}
+            </Picker>
+            <Cog resetChecks={this.resetChecks} />
+          </View>
+          <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
+          <AdMobBanner style={styles.bottomBanner}
+            bannerSize="fullBanner"
+            //adUnitID="ca-app-pub-2964072979069071/2820899412"
+            adUnitID="ca-app-pub-3940256099942544/6300978111"
+            testDeviceID="EMULATOR"
+            onDidFailToReceiveAdWithError={this.bannerError}
           />
-      </View>
+        </View>
+      </MenuProvider>
     );
   }
 }
@@ -1240,14 +1263,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     */
-    marginBottom: 100
+    marginBottom: 80
   },
   picker: {
-    marginTop: 50,
     width: 150
   },
   bottomBanner: {
     position: "absolute",
     bottom: 0
+  },
+  topBar: {
+    marginTop: "5%",
+    flexDirection: 'row'
   },
 });

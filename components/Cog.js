@@ -1,0 +1,113 @@
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, Alert } from 'react-native';
+import {
+    Menu,
+    MenuProvider,
+    MenuOptions,
+    MenuOption,
+    MenuTrigger,
+} from 'react-native-popup-menu';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { TextInput } from 'react-native-gesture-handler';
+import DialogInput from 'react-native-dialog-input';
+
+
+
+export default class Cog extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            options: ["resetChecks", "addProfile", "switchProfile"],
+            resetChecks: props.resetChecks || function(){},
+            isDialogVisible: false
+        }
+
+        this.selectOption = this.selectOption.bind(this)
+        this.showDialog = this.showDialog.bind(this)
+    }
+    selectOption(option) {
+        console.log(`option = ${option}`)
+        if(option === this.state.options[0]){
+            Alert.alert(
+                'Confirm resetting checkmarks',
+                'Are you sure you want to reset checkmarks for this profile? You cannot undo this.',
+                [
+                    {text: 'Confirm', onPress: this.state.resetChecks},
+                    {text: 'Cancel'}
+                ]
+            )
+        }
+        else if (option === this.state.options[1]){
+            this.showDialog(true)
+        }
+    }
+    sendInput(text){
+        console.log("got text = " + text)
+        this.showDialog(false)
+    }
+    showDialog(show){
+        this.setState({isDialogVisible: show})
+    }
+    render() {
+        //onSelect={value => alert(`Selected number: ${value}`)}>
+        return (
+            <View style={styles.container}>
+                <Menu onSelect={option => this.selectOption(option)}>
+                    <MenuTrigger>
+                        <FontAwesome name="cog" size={32} />
+                    </MenuTrigger>
+                    <MenuOptions customStyles={optionsStyles} >
+                        <MenuOption value={this.state.options[0]}>
+                            <Text style={styles.text}>reset checkmarks</Text>
+                        </MenuOption>
+                        <MenuOption value={this.state.options[1]}>
+                            <Text style={styles.text}>add new profile</Text>
+                        </MenuOption>
+                        <MenuOption value={this.state.options[2]}>
+                            <Text style={styles.text}>switch profile</Text>
+                        </MenuOption>
+                    </MenuOptions>
+                </Menu>
+                <DialogInput isDialogVisible={this.state.isDialogVisible}
+            title={"DialogInput 1"}
+            message={"Message for DialogInput #1"}
+            hintInput ={"HINT INPUT"}
+            submitInput={ (inputText) => {this.sendInput(inputText)} }
+            closeDialog={ () => {this.showDialog(false)}}>
+</DialogInput>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        top: 10,
+        position: "absolute",
+        right: "2%",
+    },
+    text: {
+        fontSize: 20
+    }
+})
+const optionsStyles = {
+    optionsContainer: {
+        //backgroundColor: 'green',
+        padding: 5,
+        width: 300
+    },
+    optionsWrapper: {
+        //backgroundColor: 'purple',
+    },
+    optionWrapper: {
+        //backgroundColor: 'yellow',
+        margin: 5,
+    },
+    optionTouchable: {
+        //underlayColor: 'gold',
+        //activeOpacity: 70,
+    },
+    optionText: {
+        //color: 'brown',
+    },
+}

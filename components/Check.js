@@ -17,6 +17,7 @@ export default class Check extends Component {
         this.pressExpand = this.pressExpand.bind(this)
     }
     componentWillReceiveProps(props){
+        //console.log(this.state.name + " got props.checked = " + props.checked)
         if(props.name != this.state.name || props.checked != this.state.checked){
             this.setState({name: props.name, expanse: props.expanse, checked: props.checked, expanded: false,
             image: props.image})
