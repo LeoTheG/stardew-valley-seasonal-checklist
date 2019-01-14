@@ -1222,7 +1222,8 @@ export default class App extends React.Component {
         <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
         <AdMobBanner style={styles.bottomBanner}
           bannerSize="fullBanner"
-          adUnitID="ca-app-pub-2964072979069071/2820899412"
+          //adUnitID="ca-app-pub-2964072979069071/2820899412"
+          adUnitID="ca-app-pub-3940256099942544/6300978111"
           testDeviceID="EMULATOR"
           onDidFailToReceiveAdWithError={this.bannerError}
           />

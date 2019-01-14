@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
         marginLeft: "10%"
     },
     image: {
-        marginTop: 15
+        marginTop: 15,
+        marginLeft: "2%"
     }
 })
