@@ -19,14 +19,16 @@ export default class Cog extends Component {
         this.state = {
             options: ["resetChecks", "addProfile", "switchProfile"],
             resetChecks: props.resetChecks || function(){},
-            isDialogVisible: false
+            isDialogVisible: false,
+            addProfile: props.addProfile,
+            switchProfile: props.switchProfile
         }
 
         this.selectOption = this.selectOption.bind(this)
         this.showDialog = this.showDialog.bind(this)
+        this.sendInput = this.sendInput.bind(this)
     }
     selectOption(option) {
-        console.log(`option = ${option}`)
         if(option === this.state.options[0]){
             Alert.alert(
                 'Confirm resetting checkmarks',
@@ -40,9 +42,12 @@ export default class Cog extends Component {
         else if (option === this.state.options[1]){
             this.showDialog(true)
         }
+        else if(option === this.state.options[2]){
+            this.state.switchProfile()
+        }
     }
     sendInput(text){
-        console.log("got text = " + text)
+        this.state.addProfile(text)
         this.showDialog(false)
     }
     showDialog(show){
@@ -69,9 +74,7 @@ export default class Cog extends Component {
                     </MenuOptions>
                 </Menu>
                 <DialogInput isDialogVisible={this.state.isDialogVisible}
-            title={"DialogInput 1"}
-            message={"Message for DialogInput #1"}
-            hintInput ={"HINT INPUT"}
+            title={"Add New Profile"}
             submitInput={ (inputText) => {this.sendInput(inputText)} }
             closeDialog={ () => {this.showDialog(false)}}>
 </DialogInput>
@@ -92,22 +95,7 @@ const styles = StyleSheet.create({
 })
 const optionsStyles = {
     optionsContainer: {
-        //backgroundColor: 'green',
         padding: 5,
         width: 300
-    },
-    optionsWrapper: {
-        //backgroundColor: 'purple',
-    },
-    optionWrapper: {
-        //backgroundColor: 'yellow',
-        margin: 5,
-    },
-    optionTouchable: {
-        //underlayColor: 'gold',
-        //activeOpacity: 70,
-    },
-    optionText: {
-        //color: 'brown',
     },
 }
