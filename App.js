@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   StyleSheet, View,
-  Picker, AsyncStorage, Alert
+  Picker, AsyncStorage, Alert, Text
 } from 'react-native';
 import Season from './components/Season';
 import { AdMobBanner } from 'expo';
@@ -21,8 +21,8 @@ export default class App extends React.Component {
       language: '',
       seasons: ["spring", "summer", "fall", "winter", "any"],
       season: "spring",
-      profiles: {"Default": initChecks()},
-      currentProfile: "Default",
+      profiles: {'Default': initChecks()},
+      currentProfile: 'Default',
       checks: initChecks(),
       displaySwitchProfileMenu: false
     }
@@ -40,31 +40,48 @@ export default class App extends React.Component {
   }
   // used for propagating up changes in checks
   check(season, category, name, checked) {
+    /*
     const newState = Object.assign({}, this.state)
     newState.checks[season][category][name]["checked"] = checked
     this.setState(newState, () => {
       this.storeData()
     })
-    //this.state.checks[season][category][name]["checked"] = checked
+    */
+   this.state.checks[season][category][name]["checked"] = checked
+   this.storeData()
   }
   storeData = async () => {
     try {
-      await AsyncStorage.setItem('checks', JSON.stringify(this.state.checks))
+      //await AsyncStorage.setItem('checks', JSON.stringify(this.state.checks))
+      await AsyncStorage.setItem('currentProfile', JSON.stringify(this.state.currentProfile))
     }
     catch (error) {
       console.log(error.message)
     }
+
+    try{
+      await AsyncStorage.setItem('profiles', JSON.stringify(this.state.profiles))
+    }
+    catch(error){ console.log(error.message)}
   }
   loadData = async () => {
-    let data = null
+    let profiles = null
+    let currentProfile = null
     try {
-      data = await AsyncStorage.getItem('checks')
+      profiles = await AsyncStorage.getItem('profiles')
+      currentProfile = await AsyncStorage.getItem('currentProfile') 
     }
     catch (error) {
       console.log(error.message)
     }
-    if (data != null) {
-      this.setState({ checks: JSON.parse(data) })
+    if (profiles != null) {
+      this.setState({ profiles: JSON.parse(profiles) },()=>{
+        if (currentProfile != null) {
+          // remove extra quotation marks from turning to json and back
+          if(currentProfile.charAt(0) == '"') currentProfile = currentProfile.substring(1,currentProfile.length-1)
+          this.setState({ currentProfile: currentProfile, checks: this.state.profiles[currentProfile] })
+        }
+      })
     }
   }
   resetChecks(){
@@ -109,6 +126,9 @@ export default class App extends React.Component {
       x.push(<Picker.Item key={count} label={this.state.seasons[s]} value={this.state.seasons[s]} />)
       count++
     }
+    if(!this.state.checks) return(
+      <View><Text>Loading...</Text></View>
+    )
     return (
       <MenuProvider>
         <View style={styles.container}>

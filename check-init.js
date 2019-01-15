@@ -5,55 +5,55 @@ export const initChecks = ()=>{
 const checks = {
     spring: {
         foraging: {
-            "Wild Horseradish": {
+            'Wild Horseradish': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Spring Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Spring Foraging',
                     lastChance: true
                 },
                 checked: false,
                 image: require('./assets/Wild_Horseradish.png')
             },
-            "Leek": {
+            'Leek': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Spring Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Spring Foraging',
                     lastChance: true
                 },
                 checked: false,
                 image: require('./assets/Leek.png')
             },
-            "Daffodil": {
+            'Daffodil': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Spring Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Spring Foraging',
                     lastChance: true
                 },
                 checked: false,
                 image: require('./assets/Daffodil.png')
             },
-            "Dandelion": {
+            'Dandelion': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Spring Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Spring Foraging',
                     lastChance: true
                 },
                 checked: false,
                 image: require('./assets/Dandelion.png')
             },
-            "Morel": {
+            'Morel': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Exotic Foraging",
+                    location: 'Secret Woods',
+                    bundle: 'Exotic Foraging',
                     lastChance: true
                 },
                 checked: false,
                 image: require('./assets/Morel.png')
             },
-            "Common Mushroom": {
+            'Common Mushroom': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Fall Foraging",
+                    location: 'Secret Woods',
+                    bundle: 'Fall Foraging',
                     lastChance: false
                 },
                 checked: false,
@@ -61,104 +61,104 @@ const checks = {
             },
         },
         farming: {
-            "Parsnip": {
+            'Parsnip': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Spring Crops",
+                    location: 'Farm',
+                    bundle: 'Spring Crops',
                     lastChance: true
                 },
                 image: require('./assets/Parsnip.png')
             },
-            "Parsnip(Gold Quality) x5": {
+            'Parsnip(Gold Quality) x5': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Quality Crops",
+                    location: 'Farm',
+                    bundle: 'Quality Crops',
                     lastChance: true
                 },
                 image: require('./assets/Gold_Parsnip.png')
             },
-            "Cauliflower": {
+            'Cauliflower': {
 
                 expanse: {
-                    location: "Farm",
-                    bundle: "Spring Crops",
+                    location: 'Farm',
+                    bundle: 'Spring Crops',
                     lastChance: true
                 },
                 image: require('./assets/Cauliflower.png')
             },
-            "Potato": {
+            'Potato': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Spring Crops",
+                    location: 'Farm',
+                    bundle: 'Spring Crops',
                     lastChance: true
                 },
                 image: require('./assets/Potato.png')
             },
-            "Green Bean": {
+            'Green Bean': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Spring Crops",
+                    location: 'Farm',
+                    bundle: 'Spring Crops',
                     lastChance: true
                 },
                 image: require('./assets/Green_Bean.png')
             },
-            "Apricot": {
+            'Apricot': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Artisan",
+                    location: 'Farm',
+                    bundle: 'Artisan',
                     lastChance: true
                 },
                 image: require('./assets/Apricot.png')
             },
-            "Cherry": {
+            'Cherry': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Artisan",
+                    location: 'Farm',
+                    bundle: 'Artisan',
                     lastChance: true
                 },
                 image: require('./assets/Cherry.png')
             },
         },
         fishing: {
-            "Sunfish": {
+            'Sunfish': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: false
                 },
                 image: require('./assets/Sunfish.png')
             },
-            "Sardine": {
+            'Sardine': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: false
                 },
                 image: require('./assets/Sardine.png')
 
             },
-            "Eel": {
+            'Eel': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Night Fishing",
+                    location: 'Ocean',
+                    bundle: 'Night Fishing',
                     lastChance: false
                 },
                 image: require('./assets/Eel.png')
 
             },
-            "Catfish": {
+            'Catfish': {
                 expanse: {
-                    location: "River/Secret Woods",
-                    bundle: "River Fish",
+                    location: 'River/Secret Woods',
+                    bundle: 'River Fish',
                     lastChance: false
                 },
                 image: require('./assets/Catfish.png')
 
             },
-            "Shad": {
+            'Shad': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: false
                 },
                 image: require('./assets/Shad.png')
@@ -167,208 +167,208 @@ const checks = {
     },
     summer: {
         foraging: {
-            "Spice Berry": {
+            'Spice Berry': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Summer Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Summer Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Spice_Berry.png')
             },
-            "Sweet Pea": {
+            'Sweet Pea': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Summer Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Summer Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Sweet_Pea.png')
 
             },
-            "Grape": {
+            'Grape': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Summer Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Summer Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Grape.png')
             },
-            "Fiddlehead Fern": {
+            'Fiddlehead Fern': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Chef",
+                    location: 'Secret Woods',
+                    bundle: 'Chef',
                     lastChance: true
                 },
                 image: require('./assets/Fiddlehead_Fern.png')
             },
-            "Red Mushroom": {
+            'Red Mushroom': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Exotic Foraging",
+                    location: 'Secret Woods',
+                    bundle: 'Exotic Foraging',
                     lastChance: false
                 },
                 image: require('./assets/Red_Mushroom.png')
             },
         },
         farming: {
-            "Tomato": {
+            'Tomato': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Summer Crops",
+                    location: 'Farm',
+                    bundle: 'Summer Crops',
                     lastChance: true
                 },
                 image: require('./assets/Tomato.png')
             },
-            "Hot Pepper": {
+            'Hot Pepper': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Summer Crops",
+                    location: 'Farm',
+                    bundle: 'Summer Crops',
                     lastChance: true
                 },
                 image: require('./assets/Hot_Pepper.png')
             },
-            "Blueberry": {
+            'Blueberry': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Summer Crops",
+                    location: 'Farm',
+                    bundle: 'Summer Crops',
                     lastChance: true
                 },
                 image: require('./assets/Blueberry.png')
             },
-            "Melon": {
+            'Melon': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Summer Crops",
+                    location: 'Farm',
+                    bundle: 'Summer Crops',
                     lastChance: true
                 },
                 image: require('./assets/Melon.png')
             },
-            "Poppy": {
+            'Poppy': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Chef",
+                    location: 'Farm',
+                    bundle: 'Chef',
                     lastChance: true
                 },
                 image: require('./assets/Poppy.png')
             },
-            "Red Cabbage": {
+            'Red Cabbage': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Dye",
+                    location: 'Farm',
+                    bundle: 'Dye',
                     lastChance: true
                 },
                 image: require('./assets/Red_Cabbage.png')
             },
-            "Melon (Gold Quality) x5": {
+            'Melon (Gold Quality) x5': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Quality Crops",
+                    location: 'Farm',
+                    bundle: 'Quality Crops',
                     lastChance: true
                 },
                 image: require('./assets/Gold_Melon.png')
             },
-            "Orange": {
+            'Orange': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Artisan",
+                    location: 'Farm',
+                    bundle: 'Artisan',
                     lastChance: true
                 },
                 image: require('./assets/Orange.png')
             },
-            "Peach": {
+            'Peach': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Artisan",
+                    location: 'Farm',
+                    bundle: 'Artisan',
                     lastChance: true
                 },
                 image: require('./assets/Peach.png')
             },
-            "Sunflower": {
+            'Sunflower': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Dye",
+                    location: 'Farm',
+                    bundle: 'Dye',
                     lastChance: false
                 },
                 image: require('./assets/Sunflower.png')
             },
-            "Wheat x10": {
+            'Wheat x10': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fodder",
+                    location: 'Farm',
+                    bundle: 'Fodder',
                     lastChance: false
                 },
                 image: require('./assets/Wheat.png')
             },
-            "Corn (Gold Quality) x5": {
+            'Corn (Gold Quality) x5': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Quality Crops",
+                    location: 'Farm',
+                    bundle: 'Quality Crops',
                     lastChance: false
                 },
                 image: require('./assets/Gold_Corn.png')
             },
         },
         fishing: {
-            "Sunfish": {
+            'Sunfish': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: true
                 },
                 image: require('./assets/Sunfish.png')
             },
-            "Pufferfish": {
+            'Pufferfish': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Specialty Fish",
+                    location: 'Ocean',
+                    bundle: 'Specialty Fish',
                     lastChance: true
                 },
                 image: require('./assets/Pufferfish.png')
             },
-            "Tilapia": {
+            'Tilapia': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: false
                 },
                 image: require('./assets/Tilapia.png')
             },
-            "Tuna": {
+            'Tuna': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: false
                 },
                 image: require('./assets/Tuna.png')
             },
-            "Sturgeon": {
+            'Sturgeon': {
                 expanse: {
-                    location: "Mountain Lake",
-                    bundle: "Lake Fish",
+                    location: 'Mountain Lake',
+                    bundle: 'Lake Fish',
                     lastChance: false
                 },
                 image: require('./assets/Sturgeon.png')
             },
-            "Red Snapper": {
+            'Red Snapper': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: false
                 },
                 image: require('./assets/Red_Snapper.png')
             },
-            "Catfish": {
+            'Catfish': {
                 expanse: {
-                    location: "River, Secret Woods",
-                    bundle: "River Fish",
+                    location: 'River, Secret Woods',
+                    bundle: 'River Fish',
                     lastChance: false,
-                    details: "Only when raining"
+                    details: 'Only when raining'
                 },
                 image: require('./assets/Catfish.png')
             },
-            "Shad": {
+            'Shad': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: false
                 },
                 image: require('./assets/Shad.png')
@@ -377,190 +377,190 @@ const checks = {
     },
     fall: {
         foraging: {
-            "Wild Plum": {
+            'Wild Plum': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Fall Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Fall Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Wild_Plum.png')
             },
-            "Hazelnut": {
+            'Hazelnut': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Fall Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Fall Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Hazelnut.png')
             },
-            "Blackberry": {
+            'Blackberry': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Fall Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Fall Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Blackberry.png')
             },
-            "Red Mushroom": {
+            'Red Mushroom': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Exotic Foraging",
+                    location: 'Secret Woods',
+                    bundle: 'Exotic Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Red_Mushroom.png')
             },
-            "Common Mushroom": {
+            'Common Mushroom': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Fall Foraging",
+                    location: 'Secret Woods',
+                    bundle: 'Fall Foraging',
                     lastChance: false
                 },
                 image: require('./assets/Common_Mushroom.png')
             },
         },
         farming: {
-            "Corn": {
+            'Corn': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fall Crops",
+                    location: 'Farm',
+                    bundle: 'Fall Crops',
                     lastChance: true
                 },
                 image: require('./assets/Corn.png')
             },
-            "Corn (Gold Quality) x5": {
+            'Corn (Gold Quality) x5': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Quality Crops",
+                    location: 'Farm',
+                    bundle: 'Quality Crops',
                     lastChance: true
                 },
                 image: require('./assets/Gold_Corn.png')
             },
-            "Sunflower": {
+            'Sunflower': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Dye",
+                    location: 'Farm',
+                    bundle: 'Dye',
                     lastChance: true
                 },
                 image: require('./assets/Sunflower.png')
             },
-            "Wheat x10": {
+            'Wheat x10': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fodder",
+                    location: 'Farm',
+                    bundle: 'Fodder',
                     lastChance: true
                 },
                 image: require('./assets/Wheat.png')
             },
-            "Eggplant": {
+            'Eggplant': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fall Crops",
+                    location: 'Farm',
+                    bundle: 'Fall Crops',
                     lastChance: true
                 },
                 image: require('./assets/Eggplant.png')
             },
-            "Pumpkin": {
+            'Pumpkin': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fall Crops",
+                    location: 'Farm',
+                    bundle: 'Fall Crops',
                     lastChance: true
                 },
                 image: require('./assets/Pumpkin.png')
             },
-            "Pumpkin (Gold Quality) x5": {
+            'Pumpkin (Gold Quality) x5': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Quality Crops",
+                    location: 'Farm',
+                    bundle: 'Quality Crops',
                     lastChance: true
                 },
                 image: require('./assets/Gold_Pumpkin.png')
             },
-            "Yam": {
+            'Yam': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fall Crops",
+                    location: 'Farm',
+                    bundle: 'Fall Crops',
                     lastChance: true
                 },
                 image: require('./assets/Yam.png')
             },
-            "Pomegranate x2": {
+            'Pomegranate x2': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Enchanters & Artisan",
+                    location: 'Farm',
+                    bundle: 'Enchanters & Artisan',
                     lastChance: true
                 },
                 image: require('./assets/Pomegranate.png')
             },
-            "Apple x4": {
+            'Apple x4': {
                 expanse: {
-                    location: "Farm",
-                    bundle: "Fodder & Artisan",
+                    location: 'Farm',
+                    bundle: 'Fodder & Artisan',
                     lastChance: true
                 },
                 image: require('./assets/Apple.png')
             },
         },
         fishing: {
-            "Red Snapper": {
+            'Red Snapper': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: true
                 },
                 image: require('./assets/Red_Snapper.png')
             },
-            "Walleye": {
+            'Walleye': {
                 expanse: {
-                    location: "River, Forest Pond, Mountain Lake",
-                    bundle: "Night Fishing",
+                    location: 'River, Forest Pond, Mountain Lake',
+                    bundle: 'Night Fishing',
                     lastChance: true
                 },
                 image: require('./assets/Walleye.png')
             },
-            "Eel": {
+            'Eel': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Night Fishing",
+                    location: 'Ocean',
+                    bundle: 'Night Fishing',
                     lastChance: true
                 },
                 image: require('./assets/Eel.png')
             },
-            "Catfish": {
+            'Catfish': {
                 expanse: {
-                    location: "River & Secret Woods",
-                    bundle: "River Fish",
+                    location: 'River & Secret Woods',
+                    bundle: 'River Fish',
                     lastChance: true
                 },
                 image: require('./assets/Catfish.png')
             },
-            "Shad": {
+            'Shad': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: true
                 },
                 image: require('./assets/Shad.png')
             },
-            "Tilapia": {
+            'Tilapia': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: true
                 },
                 image: require('./assets/Tilapia.png')
             },
-            "Tiger Trout": {
+            'Tiger Trout': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: false
                 },
                 image: require('./assets/Tiger_Trout.png')
             },
-            "Sardine": {
+            'Sardine': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: false
                 },
                 image: require('./assets/Sardine.png')
@@ -569,76 +569,76 @@ const checks = {
     },
     winter: {
         forage: {
-            "Winter Root": {
+            'Winter Root': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Winter Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Winter Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Winter_Root.png')
             },
-            "Crystal Fruit": {
+            'Crystal Fruit': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Winter Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Winter Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Crystal_Fruit.png')
             },
-            "Crocus": {
+            'Crocus': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Winter Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Winter Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Crocus.png')
             },
-            "Snow Yam": {
+            'Snow Yam': {
                 expanse: {
-                    location: "Stardew Valley",
-                    bundle: "Winter Foraging",
+                    location: 'Stardew Valley',
+                    bundle: 'Winter Foraging',
                     lastChance: true
                 },
                 image: require('./assets/Snow_Yam.png')
             },
-            "Nautilus Shell": {
+            'Nautilus Shell': {
                 expanse: {
-                    location: "Beach",
-                    bundle: "Field Research",
+                    location: 'Beach',
+                    bundle: 'Field Research',
                     lastChance: true
                 },
                 image: require('./assets/Nautilus_Shell.png')
             },
         },
         fishing: {
-            "Tiger Trout": {
+            'Tiger Trout': {
                 expanse: {
-                    location: "River",
-                    bundle: "River Fish",
+                    location: 'River',
+                    bundle: 'River Fish',
                     lastChance: true
                 },
                 image: require('./assets/Tiger_Trout.png')
             },
-            "Sturgeon": {
+            'Sturgeon': {
                 expanse: {
-                    location: "Mountain Lake",
-                    bundle: "Lake Fish",
+                    location: 'Mountain Lake',
+                    bundle: 'Lake Fish',
                     lastChance: true
                 },
                 image: require('./assets/Sturgeon.png')
             },
-            "Sardine": {
+            'Sardine': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: true
                 },
                 image: require('./assets/Sardine.png')
             },
-            "Tuna": {
+            'Tuna': {
                 expanse: {
-                    location: "Ocean",
-                    bundle: "Ocean Fish",
+                    location: 'Ocean',
+                    bundle: 'Ocean Fish',
                     lastChance: true
                 },
                 image: require('./assets/Tuna.png')
@@ -647,507 +647,507 @@ const checks = {
     },
     any: {
         foraging: {
-            "Coconut": {
+            'Coconut': {
                 expanse: {
-                    location: "Desert",
-                    bundle: "Exotic Foraging",
+                    location: 'Desert',
+                    bundle: 'Exotic Foraging',
                     lastChance: false
                 },
                 image: require('./assets/Coconut.png')
             },
-            "Cactus Fruit": {
+            'Cactus Fruit': {
                 expanse: {
-                    location: "Desert",
-                    bundle: "Exotic Foraging",
+                    location: 'Desert',
+                    bundle: 'Exotic Foraging',
                     lastChance: false
                 },
                 image: require('./assets/Cactus_Fruit.png')
             },
-            "Cockle": {
+            'Cockle': {
                 expanse: {
-                    location: "Beach",
-                    bundle: "Crab Pot",
+                    location: 'Beach',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Cockle.png')
             },
-            "Mussel": {
+            'Mussel': {
                 expanse: {
-                    location: "Beach",
-                    bundle: "Crab Pot",
+                    location: 'Beach',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Mussel.png')
             },
-            "Clam": {
+            'Clam': {
                 expanse: {
-                    location: "Beach",
-                    bundle: "Crab Pot",
+                    location: 'Beach',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Clam.png')
             },
-            "Sea Urchin": {
+            'Sea Urchin': {
                 expanse: {
-                    location: "Beach",
-                    bundle: "Dye",
+                    location: 'Beach',
+                    bundle: 'Dye',
                     lastChance: false
                 },
                 image: require('./assets/Sea_Urchin.png')
             },
-            "Purple Mushroom x2": {
+            'Purple Mushroom x2': {
                 expanse: {
-                    location: "The Mines (Floors 81+)",
-                    bundle: "Field Research & Exotic",
+                    location: 'The Mines (Floors 81+)',
+                    bundle: 'Field Research & Exotic',
                     lastChance: false
                 },
                 image: require('./assets/Purple_Mushroom.png')
             },
         },
         farming: {
-            "Large Milk": {
+            'Large Milk': {
                 expanse: {
-                    location: "Farm - Cows",
-                    bundle: "Animal",
+                    location: 'Farm - Cows',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Large_Milk.png')
             },
-            "Large Egg (Brown)": {
+            'Large Egg (Brown)': {
                 expanse: {
-                    location: "Farm - Brown Chickens",
-                    bundle: "Animal",
+                    location: 'Farm - Brown Chickens',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Large_Egg_Brown.png')
             },
-            "Large Egg (White)": {
+            'Large Egg (White)': {
                 expanse: {
-                    location: "Farm - White Chickens",
-                    bundle: "Animal",
+                    location: 'Farm - White Chickens',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Large_Egg_White.png')
             },
-            "Large Goat Milk": {
+            'Large Goat Milk': {
                 expanse: {
-                    location: "Farm - Goats",
-                    bundle: "Animal",
+                    location: 'Farm - Goats',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Large_Goat_Milk.png')
             },
-            "Duck Egg": {
+            'Duck Egg': {
                 expanse: {
-                    location: "Farm - Ducks",
-                    bundle: "Animal",
+                    location: 'Farm - Ducks',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Duck_Egg.png')
             },
-            "Wool": {
+            'Wool': {
                 expanse: {
-                    location: "Farm - Sheep",
-                    bundle: "Animal",
+                    location: 'Farm - Sheep',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Wool.png')
             },
-            "Truffle": {
+            'Truffle': {
                 expanse: {
-                    location: "Farm - Pigs",
-                    bundle: "Chef",
+                    location: 'Farm - Pigs',
+                    bundle: 'Chef',
                     lastChance: false
                 },
                 image: require('./assets/Truffle.png')
             },
-            "Duck Feather": {
+            'Duck Feather': {
                 expanse: {
-                    location: "Farm - Ducks",
-                    bundle: "Dye",
+                    location: 'Farm - Ducks',
+                    bundle: 'Dye',
                     lastChance: false
                 },
                 image: require('./assets/Duck_Feather.png')
             },
-            "Jelly": {
+            'Jelly': {
                 expanse: {
-                    location: "Farm - Fruit in Keg",
-                    bundle: "Artisan",
+                    location: 'Farm - Fruit in Keg',
+                    bundle: 'Artisan',
                     lastChance: false
                 },
                 image: require('./assets/Jelly.png')
             },
-            "Honey": {
+            'Honey': {
                 expanse: {
-                    location: "Farm - Bee House",
-                    bundle: "Artisan",
+                    location: 'Farm - Bee House',
+                    bundle: 'Artisan',
                     lastChance: false
                 },
                 image: require('./assets/Honey.png')
             },
-            "Truffle Oil": {
+            'Truffle Oil': {
                 expanse: {
-                    location: "Farm - Oil Maker",
-                    bundle: "Artisan",
+                    location: 'Farm - Oil Maker',
+                    bundle: 'Artisan',
                     lastChance: false
                 },
                 image: require('./assets/Truffle_Oil.png')
             },
-            "Goat Cheese": {
+            'Goat Cheese': {
                 expanse: {
-                    location: "Farm - Cheese Press",
-                    bundle: "Artisan",
+                    location: 'Farm - Cheese Press',
+                    bundle: 'Artisan',
                     lastChance: false
                 },
                 image: require('./assets/Goat_Cheese.png')
             },
-            "Cloth": {
+            'Cloth': {
                 expanse: {
-                    location: "Farm - Loom",
-                    bundle: "Artisan",
+                    location: 'Farm - Loom',
+                    bundle: 'Artisan',
                     lastChance: false
                 },
                 image: require('./assets/Cloth.png')
             },
-            "Cheese": {
+            'Cheese': {
                 expanse: {
-                    location: "Farm - Cheese Press",
-                    bundle: "Animal",
+                    location: 'Farm - Cheese Press',
+                    bundle: 'Animal',
                     lastChance: false
                 },
                 image: require('./assets/Cheese.png')
             },
-            "Maple Syrup": {
+            'Maple Syrup': {
                 expanse: {
-                    location: "Tapped Maple Tree",
-                    bundle: "Exotic Foraging",
+                    location: 'Tapped Maple Tree',
+                    bundle: 'Exotic Foraging',
                     lastChance: false
                 },
                 image: require('./assets/Maple_Syrup.png')
             },
-            "Pine Tar": {
+            'Pine Tar': {
                 expanse: {
-                    location: "Tapped Pine Tree",
-                    bundle: "Exotic Foraging",
+                    location: 'Tapped Pine Tree',
+                    bundle: 'Exotic Foraging',
                     lastChance: false
                 },
                 image: require('./assets/Pine_Tar.png')
             },
-            "Oak Resin x2": {
+            'Oak Resin x2': {
                 expanse: {
-                    location: "Tapped Oak Tree",
-                    bundle: "Enchanter & Exotic",
+                    location: 'Tapped Oak Tree',
+                    bundle: 'Enchanter & Exotic',
                     lastChance: false
                 },
                 image: require('./assets/Oak_Resin.png')
             },
-            "Wine": {
+            'Wine': {
                 expanse: {
-                    location: "Farm - Casks/Kegs",
-                    bundle: "Enchanter",
+                    location: 'Farm - Casks/Kegs',
+                    bundle: 'Enchanter',
                     lastChance: false
                 },
                 image: require('./assets/Wine.png')
             },
-            "Rabbit's Foot": {
+            'Rabbit\'s Foot': {
                 expanse: {
-                    location: "Farm - Rabbits",
-                    bundle: "Enchanter",
+                    location: 'Farm - Rabbits',
+                    bundle: 'Enchanter',
                     lastChance: false
                 },
                 image: require('./assets/Rabbit\'s_Foot.png')
             },
         },
         fishing: {
-            "Bullhead": {
+            'Bullhead': {
                 expanse: {
-                    location: "Mountain Lake",
-                    bundle: "Lake Fish",
+                    location: 'Mountain Lake',
+                    bundle: 'Lake Fish',
                     lastChance: false
                 },
                 image: require('./assets/Bullhead.png')
             },
-            "Largemouth Bass": {
+            'Largemouth Bass': {
                 expanse: {
-                    location: "Mountain Lake",
-                    bundle: "Lake Fish",
+                    location: 'Mountain Lake',
+                    bundle: 'Lake Fish',
                     lastChance: false
                 },
                 image: require('./assets/Largemouth_Bass.png')
             },
-            "Lobster": {
+            'Lobster': {
                 expanse: {
-                    location: "Ocean - Crab Pots",
-                    bundle: "Crab Pot",
+                    location: 'Ocean - Crab Pots',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Lobster.png')
             },
-            "Crayfish": {
+            'Crayfish': {
                 expanse: {
-                    location: "River, Lake - Crab Pots",
-                    bundle: "Crab Pot",
+                    location: 'River, Lake - Crab Pots',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Crayfish.png')
             },
-            "Crab": {
+            'Crab': {
                 expanse: {
-                    location: "Ocean - Crab Pots",
-                    bundle: "Crab Pots",
+                    location: 'Ocean - Crab Pots',
+                    bundle: 'Crab Pots',
                     lastChance: false
                 },
                 image: require('./assets/Crab.png')
             },
-            "Shrimp": {
+            'Shrimp': {
                 expanse: {
-                    location: "Ocean - Crab Pots",
-                    bundle: "Crab Pot",
+                    location: 'Ocean - Crab Pots',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Shrimp.png')
             },
-            "Snail": {
+            'Snail': {
                 expanse: {
-                    location: "River, Lake - Crab Pots",
-                    bundle: "Crab Pot",
+                    location: 'River, Lake - Crab Pots',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Snail.png')
             },
-            "Periwinkle": {
+            'Periwinkle': {
                 expanse: {
-                    location: "River, Lake - Crab Pots",
-                    bundle: "Crab Pot",
+                    location: 'River, Lake - Crab Pots',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Periwinkle.png')
             },
-            "Oyster": {
+            'Oyster': {
                 expanse: {
-                    location: "Ocean - Crab Pots",
-                    bundle: "Crab Pot",
+                    location: 'Ocean - Crab Pots',
+                    bundle: 'Crab Pot',
                     lastChance: false
                 },
                 image: require('./assets/Oyster.png')
             },
-            "Ghostfish": {
+            'Ghostfish': {
                 expanse: {
-                    location: "Cave Fishing, Killing Ghosts",
-                    bundle: "Specialty Fish",
+                    location: 'Cave Fishing, Killing Ghosts',
+                    bundle: 'Specialty Fish',
                     lastChance: false
                 },
                 image: require('./assets/Ghostfish.png')
             },
-            "Sandfish": {
+            'Sandfish': {
                 expanse: {
-                    location: "Desert Fishing",
-                    bundle: "Specialty Fish",
+                    location: 'Desert Fishing',
+                    bundle: 'Specialty Fish',
                     lastChance: false
                 },
                 image: require('./assets/Sandfish.png')
             },
-            "Carp": {
+            'Carp': {
                 expanse: {
-                    location: "All Lakes",
-                    bundle: "Lake Fish",
+                    location: 'All Lakes',
+                    bundle: 'Lake Fish',
                     lastChance: false
                 },
                 image: require('./assets/Carp.png')
             },
-            "Woodskip": {
+            'Woodskip': {
                 expanse: {
-                    location: "Secret Woods",
-                    bundle: "Speciality Fish",
+                    location: 'Secret Woods',
+                    bundle: 'Speciality Fish',
                     lastChance: false
                 },
                 image: require('./assets/Woodskip.png')
             },
-            "Chub": {
+            'Chub': {
                 expanse: {
-                    location: "Anywhere",
-                    bundle: "Field Research",
+                    location: 'Anywhere',
+                    bundle: 'Field Research',
                     lastChance: false
                 },
                 image: require('./assets/Chub.png')
             },
-            "Bream": {
+            'Bream': {
                 expanse: {
-                    location: "River",
-                    bundle: "Night Fishing",
+                    location: 'River',
+                    bundle: 'Night Fishing',
                     lastChance: false
                 },
                 image: require('./assets/Bream.png')
             },
         },
-        "mining and combat": {
-            "Copper Bar": {
+        'mining and combat': {
+            'Copper Bar': {
                 expanse: {
-                    location: "The Mines",
-                    bundle: "Blacksmith",
+                    location: 'The Mines',
+                    bundle: 'Blacksmith',
                 },
                 image: require('./assets/Copper_Bar.png')
             },
-            "Iron Bar": {
+            'Iron Bar': {
                 expanse: {
-                    location: "The Mines (Floors 40+)",
-                    bundle: "Blacksmith",
+                    location: 'The Mines (Floors 40+)',
+                    bundle: 'Blacksmith',
                 },
                 image: require('./assets/Iron_Bar.png')
             },
-            "Gold Bar x6": {
+            'Gold Bar x6': {
                 expanse: {
-                    location: "The Mines (Floors 80+)",
-                    bundle: "Blacksmith & Enchanters",
+                    location: 'The Mines (Floors 80+)',
+                    bundle: 'Blacksmith & Enchanters',
                 },
                 image: require('./assets/Gold_Bar.png')
             },
-            "Quartz": {
+            'Quartz': {
                 expanse: {
-                    location: "The Mines",
-                    bundle: "Geologist",
+                    location: 'The Mines',
+                    bundle: 'Geologist',
                 },
                 image: require('./assets/Quartz.png')
             },
-            "Earth Crystal": {
+            'Earth Crystal': {
                 expanse: {
-                    location: "The Mines (Floors 1-39)",
-                    bundle: "Geologist",
+                    location: 'The Mines (Floors 1-39)',
+                    bundle: 'Geologist',
                 },
                 image: require('./assets/Earth_Crystal.png')
             },
-            "Frozen Tear": {
+            'Frozen Tear': {
                 expanse: {
-                    location: "The Mines (Floors 40-79) ",
-                    bundle: "Geologist",
+                    location: 'The Mines (Floors 40-79) ',
+                    bundle: 'Geologist',
                 },
                 image: require('./assets/Frozen_Tear.png')
             },
-            "Fire Quartz": {
+            'Fire Quartz': {
                 expanse: {
-                    location: "The Mines (Floors 80-120)",
-                    bundle: "Geologist",
+                    location: 'The Mines (Floors 80-120)',
+                    bundle: 'Geologist',
                 },
                 image: require('./assets/Fire_Quartz.png')
             },
-            "Aquamarine": {
+            'Aquamarine': {
                 expanse: {
-                    location: "The Mines",
-                    bundle: "Dye",
+                    location: 'The Mines',
+                    bundle: 'Dye',
                 },
                 image: require('./assets/Aquamarine.png')
             },
-            "Frozen Geode": {
+            'Frozen Geode': {
                 expanse: {
-                    location: "The Mines (Floors 40-79)",
-                    bundle: "Field Research",
+                    location: 'The Mines (Floors 40-79)',
+                    bundle: 'Field Research',
                 },
                 image: require('./assets/Frozen_Geode.png')
             },
-            "Bat Wings x10": {
+            'Bat Wings x10': {
                 expanse: {
-                    location: "The Mines",
-                    bundle: "Adventurer",
+                    location: 'The Mines',
+                    bundle: 'Adventurer',
                 },
                 image: require('./assets/Bat_Wings.png')
             },
-            "Slime x99": {
+            'Slime x99': {
                 expanse: {
-                    location: "The Mines",
-                    bundle: "Adventurer",
+                    location: 'The Mines',
+                    bundle: 'Adventurer',
                 },
                 image: require('./assets/Slime.png')
             },
-            "Solar Essence": {
+            'Solar Essence': {
                 expanse: {
-                    location: "The Mines (Floors 31+)",
-                    bundle: "Adventurer",
+                    location: 'The Mines (Floors 31+)',
+                    bundle: 'Adventurer',
                 },
                 image: require('./assets/Solar_Essence.png')
             },
-            "Void Essence": {
+            'Void Essence': {
                 expanse: {
-                    location: "The Mines (Floors 81+)",
-                    bundle: "Blacksmith",
+                    location: 'The Mines (Floors 81+)',
+                    bundle: 'Blacksmith',
                 },
                 image: require('./assets/Void_Essence.png')
             },
-            "Cave Carrot": {
+            'Cave Carrot': {
                 expanse: {
-                    location: "The Mines",
-                    bundle: "Exotic Foraging",
+                    location: 'The Mines',
+                    bundle: 'Exotic Foraging',
                 },
                 image: require('./assets/Cave_Carrot.png')
             },
         },
-        "misc.": {
-            "Maki Roll": {
+        'misc.': {
+            'Maki Roll': {
                 expanse: {
-                    location: "Cooking",
-                    bundle: "Chef"
+                    location: 'Cooking',
+                    bundle: 'Chef'
                 },
                 image: require('./assets/Maki_Roll.png')
             },
-            "Fried Egg": {
+            'Fried Egg': {
                 expanse: {
-                    location: "Cooking",
-                    bundle: "Chef"
+                    location: 'Cooking',
+                    bundle: 'Chef'
                 },
                 image: require('./assets/Fried_Egg.png')
             },
-            "Hay x10": {
+            'Hay x10': {
                 expanse: {
-                    location: "Farm - Grass",
-                    bundle: "Fodder"
+                    location: 'Farm - Grass',
+                    bundle: 'Fodder'
                 },
                 image: require('./assets/Hay.png')
             },
-            "Wood x198": {
+            'Wood x198': {
                 expanse: {
-                    location: "Trees",
-                    bundle: "Construction"
+                    location: 'Trees',
+                    bundle: 'Construction'
                 },
                 image: require('./assets/Wood.png')
             },
-            "Stone x99": {
+            'Stone x99': {
                 expanse: {
-                    location: "Rocks",
-                    bundle: "Construction"
+                    location: 'Rocks',
+                    bundle: 'Construction'
                 },
                 image: require('./assets/Stone.png')
             },
-            "Hardwood x10": {
+            'Hardwood x10': {
                 expanse: {
-                    location: "Big Tree Stumps & Logs",
-                    bundle: "Construction"
+                    location: 'Big Tree Stumps & Logs',
+                    bundle: 'Construction'
                 },
                 image: require('./assets/Hardwood.png')
             },
-            "Money x2.5k": {
+            'Money x2.5k': {
                 expanse: {
-                    location: "-",
-                    bundle: "Vault"
+                    location: '-',
+                    bundle: 'Vault'
                 },
                 image: require('./assets/Money.png')
             },
-            "Money x5k": {
+            'Money x5k': {
                 expanse: {
-                    location: "-",
-                    bundle: "Vault"
+                    location: '-',
+                    bundle: 'Vault'
                 },
                 image: require('./assets/Money.png')
             },
-            "Money x10k": {
+            'Money x10k': {
                 expanse: {
-                    location: "-",
-                    bundle: "Vault"
+                    location: '-',
+                    bundle: 'Vault'
                 },
                 image: require('./assets/Money.png')
             },
-            "Money x25k": {
+            'Money x25k': {
                 expanse: {
-                    location: "-",
-                    bundle: "Vault"
+                    location: '-',
+                    bundle: 'Vault'
                 },
                 image: require('./assets/Money.png')
             },
