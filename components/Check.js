@@ -11,7 +11,7 @@ export default class Check extends Component {
             checked: props.checked || false,
             expanded: false,
             check: props.check || function(){},
-            image: props.image
+            image: props.image,
         }
         this.press = this.press.bind(this)
         this.pressExpand = this.pressExpand.bind(this)
@@ -37,7 +37,9 @@ export default class Check extends Component {
         if (this.state.expanded) {
             x.push(<Text key={"location-"+count}>Location: {this.state.expanse.location}</Text>)
             x.push(<Text key={"bundle-"+count}>Bundle: {this.state.expanse.bundle}</Text>)
-            x.push(<Text key={"lastChance-"+count}>Last Chance?: {this.state.expanse.lastChance ? "Yes" : "No"}</Text>)
+            x.push(<Text key={"lastChance-"+count}>{this.state.expanse.lastChance ? "Last chance" : "Not last chance"}</Text>)
+            if(this.state.expanse.details)
+                x.push(<Text key={"details-"+count}>Details: {this.state.expanse.details}</Text>)
             count++
         }
         else x = <View></View>

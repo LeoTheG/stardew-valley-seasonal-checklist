@@ -25,6 +25,8 @@ export default class App extends React.Component {
       checks: initChecks(),
       displaySwitchProfileMenu: false,
       displayRemoveProfileMenu: false,
+      version: '1.1',
+      setVersion: false
     }
     this.check = this.check.bind(this)
     this.storeData = this.storeData.bind(this)
@@ -44,20 +46,19 @@ export default class App extends React.Component {
   }
   // used for propagating up changes in checks
   check(season, category, name, checked) {
-    /*
-    const newState = Object.assign({}, this.state)
-    newState.checks[season][category][name]["checked"] = checked
-    this.setState(newState, () => {
-      this.storeData()
-    })
-    */
     this.state.checks[season][category][name]["checked"] = checked
     this.storeData()
   }
   storeData = async () => {
+    if(!this.state.setVersion){
+      try{
+        await AsyncStorage.setItem('version', this.state.version)
+      }
+      catch(error){ console.log(error.message) }
+      this.setState({setVersion: true})
+    }
     try {
-      //await AsyncStorage.setItem('checks', JSON.stringify(this.state.checks))
-      await AsyncStorage.setItem('currentProfile', JSON.stringify(this.state.currentProfile))
+      await AsyncStorage.setItem('currentProfile', this.state.currentProfile)
     }
     catch (error) {
       console.log(error.message)
@@ -82,7 +83,7 @@ export default class App extends React.Component {
       this.setState({ profiles: JSON.parse(profiles) }, () => {
         if (currentProfile != null) {
           // remove extra quotation marks from turning to json and back
-          if (currentProfile.charAt(0) == '"') currentProfile = currentProfile.substring(1, currentProfile.length - 1)
+          //if (currentProfile.charAt(0) == '"') currentProfile = currentProfile.substring(1, currentProfile.length - 1)
           this.setState({ currentProfile: currentProfile, checks: this.state.profiles[currentProfile] })
         }
       })
@@ -97,6 +98,7 @@ export default class App extends React.Component {
       }
     }
     this.forceUpdate()
+    this.storeData()
   }
   switchProfile() {
     this.setState({ displaySwitchProfileMenu: true })
@@ -105,21 +107,35 @@ export default class App extends React.Component {
     this.setState({ displayRemoveProfileMenu: true })
   }
   addProfile(name) {
-    if (name in this.state.profiles) {
+    // max amt of profiles
+    if (Object.keys(this.state.profiles).length >= 10) {
       Alert.alert(
-        'Profile already exists',
-        'A profile with the name ' + name + ' already exists!',
+        'Max profile limit',
+        'You cannot have more than 10 profiles',
         [
           { text: 'OK' }
         ]
       )
     }
     else {
-      let state = Object.assign({}, this.state);    //creating copy of object
-      state.profiles[name] = initChecks()
-      this.setState(state,()=>{
-        this.storeData()
-      })
+
+      if (name.length > 50) name = name.substring(0, 50)
+      if (name in this.state.profiles) {
+        Alert.alert(
+          'Profile already exists',
+          'A profile with the name ' + name + ' already exists!',
+          [
+            { text: 'OK' }
+          ]
+        )
+      }
+      else {
+        let state = Object.assign({}, this.state);    //creating copy of object
+        state.profiles[name] = initChecks()
+        this.setState(state, () => {
+          this.storeData()
+        })
+      }
     }
   }
   getProfileNames() {
@@ -155,13 +171,13 @@ export default class App extends React.Component {
             <Cog resetChecks={this.resetChecks} addProfile={this.addProfile} switchProfile={this.switchProfile}
               removeProfile={this.removeProfile}
             />
-              <SwitchProfileMenu names={this.getProfileNames()}
-                display={this.state.displaySwitchProfileMenu}
-                onClose={this.onCloseSwitchProfile}
-                selectProfile={this.selectSwitchProfile}
-                isProfile={this.isProfile}
-                currentProfile={this.state.currentProfile}
-              />
+            <SwitchProfileMenu names={this.getProfileNames()}
+              display={this.state.displaySwitchProfileMenu}
+              onClose={this.onCloseSwitchProfile}
+              selectProfile={this.selectSwitchProfile}
+              isProfile={this.isProfile}
+              currentProfile={this.state.currentProfile}
+            />
             <RemoveProfileMenu names={this.getProfileNames()}
               display={this.state.displayRemoveProfileMenu}
               onClose={this.onCloseRemoveProfile}
@@ -210,7 +226,7 @@ export default class App extends React.Component {
           'Are you sure you want to delete ' + profile + '?',
           [
             {
-              text: 'OK', onPress:() => {
+              text: 'OK', onPress: () => {
 
                 delete this.state.profiles[profile]
                 // swap current profile
@@ -253,5 +269,3 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
 });
-
-// need to add profile removing and details on items

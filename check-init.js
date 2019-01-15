@@ -43,16 +43,16 @@ const checks = {
             },
             'Morel': {
                 expanse: {
-                    location: 'Secret Woods',
+                    location: 'Secret Woods, Mushroom Cave',
                     bundle: 'Exotic Foraging',
-                    lastChance: true
+                    lastChance: true,
                 },
                 checked: false,
                 image: require('./assets/Morel.png')
             },
             'Common Mushroom': {
                 expanse: {
-                    location: 'Secret Woods',
+                    location: 'Secret Woods, Mushroom Cave',
                     bundle: 'Fall Foraging',
                     lastChance: false
                 },
@@ -106,7 +106,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Artisan',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Must be planted before Spring. Not possible in Year 1'
                 },
                 image: require('./assets/Apricot.png')
             },
@@ -114,7 +115,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Artisan',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Must be planted before Spring. Not possible in Year 1'
                 },
                 image: require('./assets/Cherry.png')
             },
@@ -124,7 +126,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sunfish.png')
             },
@@ -132,7 +135,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sardine.png')
 
@@ -141,7 +145,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Night Fishing',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Raining; 4PM to 2AM only'
                 },
                 image: require('./assets/Eel.png')
 
@@ -150,7 +155,8 @@ const checks = {
                 expanse: {
                     location: 'River/Secret Woods',
                     bundle: 'River Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Only when raining'
                 },
                 image: require('./assets/Catfish.png')
 
@@ -159,7 +165,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Only when raining'
                 },
                 image: require('./assets/Shad.png')
             },
@@ -188,7 +195,8 @@ const checks = {
                 expanse: {
                     location: 'Stardew Valley',
                     bundle: 'Summer Foraging',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Can also be grown on farm'
                 },
                 image: require('./assets/Grape.png')
             },
@@ -204,7 +212,8 @@ const checks = {
                 expanse: {
                     location: 'Secret Woods',
                     bundle: 'Exotic Foraging',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Also in Mushroom Cave and The Mines (Floors 27+)'
                 },
                 image: require('./assets/Red_Mushroom.png')
             },
@@ -254,7 +263,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Dye',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Available Year 2 from Pierre; Possible to get from traveling cart.'
                 },
                 image: require('./assets/Red_Cabbage.png')
             },
@@ -270,7 +280,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Artisan',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Must be planted before Summer'
                 },
                 image: require('./assets/Orange.png')
             },
@@ -278,7 +289,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Artisan',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Must be planted before Summer'
                 },
                 image: require('./assets/Peach.png')
             },
@@ -286,7 +298,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Dye',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Also plantable in Fall'
                 },
                 image: require('./assets/Sunflower.png')
             },
@@ -294,7 +307,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Fodder',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Also plantable in Fall'
                 },
                 image: require('./assets/Wheat.png')
             },
@@ -312,7 +326,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sunfish.png')
             },
@@ -320,7 +335,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Specialty Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '12PM to 4PM only'
                 },
                 image: require('./assets/Pufferfish.png')
             },
@@ -328,7 +344,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 2PM only'
                 },
                 image: require('./assets/Tilapia.png')
             },
@@ -336,7 +353,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Tuna.png')
             },
@@ -344,7 +362,8 @@ const checks = {
                 expanse: {
                     location: 'Mountain Lake',
                     bundle: 'Lake Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sturgeon.png')
             },
@@ -352,7 +371,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Raining; 6AM to 7PM only'
                 },
                 image: require('./assets/Red_Snapper.png')
             },
@@ -369,7 +389,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Only when raining'
                 },
                 image: require('./assets/Shad.png')
             },
@@ -397,7 +418,8 @@ const checks = {
                 expanse: {
                     location: 'Stardew Valley',
                     bundle: 'Fall Foraging',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Found on bushes from Fall 8th to 11th'
                 },
                 image: require('./assets/Blackberry.png')
             },
@@ -405,13 +427,14 @@ const checks = {
                 expanse: {
                     location: 'Secret Woods',
                     bundle: 'Exotic Foraging',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Also in Mushroom Cave and The Mines (Floors 27+)'
                 },
                 image: require('./assets/Red_Mushroom.png')
             },
             'Common Mushroom': {
                 expanse: {
-                    location: 'Secret Woods',
+                    location: 'Secret Woods, Mushroom Cave',
                     bundle: 'Fall Foraging',
                     lastChance: false
                 },
@@ -487,7 +510,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Enchanters & Artisan',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Must be planted before Fall'
                 },
                 image: require('./assets/Pomegranate.png')
             },
@@ -495,7 +519,8 @@ const checks = {
                 expanse: {
                     location: 'Farm',
                     bundle: 'Fodder & Artisan',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Must be planted before Fall'
                 },
                 image: require('./assets/Apple.png')
             },
@@ -505,7 +530,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Raining; 6AM to 7PM only'
                 },
                 image: require('./assets/Red_Snapper.png')
             },
@@ -513,7 +539,8 @@ const checks = {
                 expanse: {
                     location: 'River, Forest Pond, Mountain Lake',
                     bundle: 'Night Fishing',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Raining; 12PM to 2AM only'
                 },
                 image: require('./assets/Walleye.png')
             },
@@ -521,7 +548,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Night Fishing',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Raining; 4PM to 2AM only'
                 },
                 image: require('./assets/Eel.png')
             },
@@ -529,7 +557,8 @@ const checks = {
                 expanse: {
                     location: 'River & Secret Woods',
                     bundle: 'River Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Only when raining'
                 },
                 image: require('./assets/Catfish.png')
             },
@@ -537,7 +566,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Only when raining'
                 },
                 image: require('./assets/Shad.png')
             },
@@ -545,7 +575,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '6AM to 2PM only'
                 },
                 image: require('./assets/Tilapia.png')
             },
@@ -553,7 +584,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Tiger_Trout.png')
             },
@@ -561,7 +593,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sardine.png')
             },
@@ -571,9 +604,10 @@ const checks = {
         forage: {
             'Winter Root': {
                 expanse: {
-                    location: 'Stardew Valley',
+                    location: 'Stardew Valley, Secret Woods',
                     bundle: 'Winter Foraging',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Found by digging with hoe outside Farm. Also found in The Mines (Floors 40 - 80)'
                 },
                 image: require('./assets/Winter_Root.png')
             },
@@ -581,7 +615,8 @@ const checks = {
                 expanse: {
                     location: 'Stardew Valley',
                     bundle: 'Winter Foraging',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Also found from Dust Sprites in The Mines (Floors 40 - 80)'
                 },
                 image: require('./assets/Crystal_Fruit.png')
             },
@@ -597,7 +632,8 @@ const checks = {
                 expanse: {
                     location: 'Stardew Valley',
                     bundle: 'Winter Foraging',
-                    lastChance: true
+                    lastChance: true,
+                    details: 'Found by digging with hoe outside Farm.'
                 },
                 image: require('./assets/Snow_Yam.png')
             },
@@ -615,7 +651,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'River Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Tiger_Trout.png')
             },
@@ -623,7 +660,8 @@ const checks = {
                 expanse: {
                     location: 'Mountain Lake',
                     bundle: 'Lake Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sturgeon.png')
             },
@@ -631,7 +669,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Sardine.png')
             },
@@ -639,7 +678,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean',
                     bundle: 'Ocean Fish',
-                    lastChance: true
+                    lastChance: true,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Tuna.png')
             },
@@ -699,7 +739,8 @@ const checks = {
                 expanse: {
                     location: 'The Mines (Floors 81+)',
                     bundle: 'Field Research & Exotic',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Also found in Mushroom Cave and Skull Cavern'
                 },
                 image: require('./assets/Purple_Mushroom.png')
             },
@@ -709,7 +750,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Cows',
                     bundle: 'Animal',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Need to have a high friendship level with chicken'
                 },
                 image: require('./assets/Large_Milk.png')
             },
@@ -717,7 +759,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Brown Chickens',
                     bundle: 'Animal',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Need to have a high friendship level with chicken'
                 },
                 image: require('./assets/Large_Egg_Brown.png')
             },
@@ -725,7 +768,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - White Chickens',
                     bundle: 'Animal',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Need to have a high friendship level with chicken'
                 },
                 image: require('./assets/Large_Egg_White.png')
             },
@@ -733,7 +777,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Goats',
                     bundle: 'Animal',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Need to have a high friendship level with goat'
                 },
                 image: require('./assets/Large_Goat_Milk.png')
             },
@@ -765,7 +810,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Ducks',
                     bundle: 'Dye',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Must have a least 1 friendship heart'
                 },
                 image: require('./assets/Duck_Feather.png')
             },
@@ -789,7 +835,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Oil Maker',
                     bundle: 'Artisan',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Place a truffle in an oil maker'
                 },
                 image: require('./assets/Truffle_Oil.png')
             },
@@ -797,7 +844,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Cheese Press',
                     bundle: 'Artisan',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Place goat milk in a cheese press'
                 },
                 image: require('./assets/Goat_Cheese.png')
             },
@@ -805,7 +853,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Loom',
                     bundle: 'Artisan',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Place wool in a loom. Can also get from using a soggy newspaper in a recycling machine'
                 },
                 image: require('./assets/Cloth.png')
             },
@@ -813,7 +862,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Cheese Press',
                     bundle: 'Animal',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Place milk in a cheese press'
                 },
                 image: require('./assets/Cheese.png')
             },
@@ -853,7 +903,8 @@ const checks = {
                 expanse: {
                     location: 'Farm - Rabbits',
                     bundle: 'Enchanter',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Also dropped by Serpents in Skull Cavern'
                 },
                 image: require('./assets/Rabbit\'s_Foot.png')
             },
@@ -871,7 +922,8 @@ const checks = {
                 expanse: {
                     location: 'Mountain Lake',
                     bundle: 'Lake Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 7PM only'
                 },
                 image: require('./assets/Largemouth_Bass.png')
             },
@@ -927,7 +979,8 @@ const checks = {
                 expanse: {
                     location: 'Ocean - Crab Pots',
                     bundle: 'Crab Pot',
-                    lastChance: false
+                    lastChance: false,
+                    details: 'Can also be found at the beach'
                 },
                 image: require('./assets/Oyster.png')
             },
@@ -943,7 +996,8 @@ const checks = {
                 expanse: {
                     location: 'Desert Fishing',
                     bundle: 'Specialty Fish',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6AM to 8PM only'
                 },
                 image: require('./assets/Sandfish.png')
             },
@@ -975,7 +1029,8 @@ const checks = {
                 expanse: {
                     location: 'River',
                     bundle: 'Night Fishing',
-                    lastChance: false
+                    lastChance: false,
+                    details: '6PM to 2AM only'
                 },
                 image: require('./assets/Bream.png')
             },
@@ -1048,6 +1103,7 @@ const checks = {
                 expanse: {
                     location: 'The Mines',
                     bundle: 'Adventurer',
+                    details: 'Drops from bats'
                 },
                 image: require('./assets/Bat_Wings.png')
             },
@@ -1055,6 +1111,7 @@ const checks = {
                 expanse: {
                     location: 'The Mines',
                     bundle: 'Adventurer',
+                    details: 'Drops from slimes'
                 },
                 image: require('./assets/Slime.png')
             },
@@ -1062,6 +1119,7 @@ const checks = {
                 expanse: {
                     location: 'The Mines (Floors 31+)',
                     bundle: 'Adventurer',
+                    details: 'Drops from ghosts, metal heads, mummies, and squid kids'
                 },
                 image: require('./assets/Solar_Essence.png')
             },
@@ -1069,6 +1127,7 @@ const checks = {
                 expanse: {
                     location: 'The Mines (Floors 81+)',
                     bundle: 'Blacksmith',
+                    details: 'Drops from shadow brutes, shadow shamans, and serpents. Also sold by Krobus'
                 },
                 image: require('./assets/Void_Essence.png')
             },
@@ -1076,6 +1135,7 @@ const checks = {
                 expanse: {
                     location: 'The Mines',
                     bundle: 'Exotic Foraging',
+                    details: 'Commonly found in wooden containers. Can also be found by hoeing dirt Floors 10-20'
                 },
                 image: require('./assets/Cave_Carrot.png')
             },
@@ -1084,21 +1144,24 @@ const checks = {
             'Maki Roll': {
                 expanse: {
                     location: 'Cooking',
-                    bundle: 'Chef'
+                    bundle: 'Chef',
+                    details: 'Can get recipe from Stardrop Saloon. Created with 1 fish, 1 seaweed, and 1 rice'
                 },
                 image: require('./assets/Maki_Roll.png')
             },
             'Fried Egg': {
                 expanse: {
                     location: 'Cooking',
-                    bundle: 'Chef'
+                    bundle: 'Chef',
+                    details: 'Get recipe from upgraded farmhouse. Created with 1 egg'
                 },
                 image: require('./assets/Fried_Egg.png')
             },
             'Hay x10': {
                 expanse: {
                     location: 'Farm - Grass',
-                    bundle: 'Fodder'
+                    bundle: 'Fodder',
+                    details: 'Scythe grass in the Farm after getting a silo. Can also buy from Marnie'
                 },
                 image: require('./assets/Hay.png')
             },
@@ -1119,7 +1182,8 @@ const checks = {
             'Hardwood x10': {
                 expanse: {
                     location: 'Big Tree Stumps & Logs',
-                    bundle: 'Construction'
+                    bundle: 'Construction',
+                    details: 'Chop big tree stumps and logs. Recurring ones found in Secret Woods'
                 },
                 image: require('./assets/Hardwood.png')
             },
