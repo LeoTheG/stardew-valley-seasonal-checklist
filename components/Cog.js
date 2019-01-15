@@ -17,11 +17,12 @@ export default class Cog extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            options: ["resetChecks", "addProfile", "switchProfile"],
+            options: ["resetChecks", "addProfile", "switchProfile", "removeProfile"],
             resetChecks: props.resetChecks || function(){},
             isDialogVisible: false,
             addProfile: props.addProfile,
-            switchProfile: props.switchProfile
+            switchProfile: props.switchProfile,
+            removeProfile: props.removeProfile
         }
 
         this.selectOption = this.selectOption.bind(this)
@@ -44,6 +45,9 @@ export default class Cog extends Component {
         }
         else if(option === this.state.options[2]){
             this.state.switchProfile()
+        }
+        else if(option === this.state.options[3]){
+            this.state.removeProfile()
         }
     }
     sendInput(text){
@@ -70,6 +74,9 @@ export default class Cog extends Component {
                         </MenuOption>
                         <MenuOption value={this.state.options[2]}>
                             <Text style={styles.text}>switch profile</Text>
+                        </MenuOption>
+                        <MenuOption value={this.state.options[3]}>
+                            <Text style={styles.text}>remove profile</Text>
                         </MenuOption>
                     </MenuOptions>
                 </Menu>

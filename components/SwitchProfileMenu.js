@@ -16,54 +16,53 @@ export default class SwitchProfileMenu extends Component {
             names: props.names || [],
             display: false,
             onClose: props.onClose,
-            selectProfile: props.selectProfile
+            selectProfile: props.selectProfile,
+            isProfile: props.isProfile,
+            currentProfile: props.currentProfile
         }
-        this.menuRef = React.createRef()
-        this.onClose = this.onClose.bind(this)
         this.selectOption = this.selectOption.bind(this)
+        this.cancelMenu = this.cancelMenu.bind(this)
     }
     componentWillReceiveProps(props) {
-        if (props.display != this.state.display)
-            this.setState({ names: props.names, display: props.display }, () => {
-                if (props.display) {
-                    /*
-                    this.menuRef.current.open().then(
-                        this.menuRef.current.open().then(console.log("display is true"))
-                    )
-                    */
-
-                } //props.ctx.menuActions.openMenu("main")
-                else {
-                    //this.menuRef.current.close()
-                }
-            })
-    }
-    onClose() {
-        /*
-        console.log("closed switch profile menu")
-        if(this.state.display){
-            this.setState({display: false})
-            this.menuRef.current.close()
-        } 
-        */
-        //this.state.onClose()
-        //this.setState({display: false})
+        if (props.display != this.state.display || props.currentProfile != this.state.currentProfile)
+            this.setState({ names: props.names, display: props.display, currentProfile: props.currentProfile })
     }
     selectOption(value) {
-        this.setState({ display: false })
-        this.state.onClose()
-        this.state.selectProfile(value)
+        if (this.state.isProfile(value)) {
+            this.setState({ display: false }, () => {
+                this.state.onClose()
+                this.state.selectProfile(value)
+            })
+        }
+    }
+    cancelMenu() {
+        this.setState({ display: false }, () => {
+            this.state.onClose()
+        })
+
     }
     render() {
         if (this.state.display) {
-
-
             const x = []
             let count = 0
+            let s = styles.text
+            let disabled = false
             for (const n in this.state.names) {
+                if (this.state.names[n] == this.state.currentProfile) {
+                    s = styles.currentProfile
+                    disabled = true
+                }
+                else {
+                    s = styles.text
+                    disabled = false
+                }
                 x.push(
-                    <MenuOption customStyles={optionStyles} key={"switch-profile-menu-option-" + count} value={this.state.names[n]}>
-                        <Text style={styles.text} >{this.state.names[n]}</Text>
+                    <MenuOption
+                        disabled={disabled}
+                        customStyles={optionStyles}
+                        key={"switch-profile-menu-option-" + count}
+                        value={this.state.names[n]}>
+                        <Text style={s} >{this.state.names[n]}</Text>
                     </MenuOption>
                 )
                 count++
@@ -71,10 +70,13 @@ export default class SwitchProfileMenu extends Component {
 
             return (
                 <View>
-                    <Menu opened={true} onClose={this.onClose} ref={this.menuRef} name="main" onSelect={this.selectOption}>
+                    <Menu opened={true} name="main" onSelect={this.selectOption}>
                         <MenuTrigger></MenuTrigger>
                         <MenuOptions customStyles={optionsStyles} >
                             {x}
+                            <MenuOption onSelect={this.cancelMenu}>
+                                <Text style={styles.cancel}>cancel</Text>
+                            </MenuOption>
                         </MenuOptions>
                     </Menu>
                 </View>
@@ -90,12 +92,18 @@ const styles = StyleSheet.create({
         right: "2%",
     },
     text: {
-        /*
-    marginLeft: "25%",
-    marginRight: "25%",
-    */
         fontSize: 20,
         textAlign: "center"
+    },
+    cancel: {
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "bold",
+    },
+    currentProfile: {
+        fontSize: 20,
+        textAlign: "center",
+        color: "grey"
     }
 })
 

@@ -8,10 +8,9 @@ import { AdMobBanner } from 'expo';
 import { FontAwesome } from '@expo/vector-icons';
 import { MenuProvider } from 'react-native-popup-menu';
 import Cog from './components/Cog';
-import {initChecks} from './check-init.js'
+import { initChecks } from './check-init.js'
 import SwitchProfileMenu from './components/SwitchProfileMenu';
-
-
+import RemoveProfileMenu from './components/RemoveProfileMenu';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -21,10 +20,11 @@ export default class App extends React.Component {
       language: '',
       seasons: ["spring", "summer", "fall", "winter", "any"],
       season: "spring",
-      profiles: {'Default': initChecks()},
+      profiles: { 'Default': initChecks() },
       currentProfile: 'Default',
       checks: initChecks(),
-      displaySwitchProfileMenu: false
+      displaySwitchProfileMenu: false,
+      displayRemoveProfileMenu: false,
     }
     this.check = this.check.bind(this)
     this.storeData = this.storeData.bind(this)
@@ -32,9 +32,13 @@ export default class App extends React.Component {
     this.resetChecks = this.resetChecks.bind(this)
     this.addProfile = this.addProfile.bind(this)
     this.switchProfile = this.switchProfile.bind(this)
+    this.removeProfile = this.removeProfile.bind(this)
     this.getProfileNames = this.getProfileNames.bind(this)
     this.onCloseSwitchProfile = this.onCloseSwitchProfile.bind(this)
-    this.selectProfile = this.selectProfile.bind(this)
+    this.onCloseRemoveProfile = this.onCloseRemoveProfile.bind(this)
+    this.selectSwitchProfile = this.selectSwitchProfile.bind(this)
+    this.selectRemoveProfile = this.selectRemoveProfile.bind(this)
+    this.isProfile = this.isProfile.bind(this)
 
     this.loadData()
   }
@@ -47,8 +51,8 @@ export default class App extends React.Component {
       this.storeData()
     })
     */
-   this.state.checks[season][category][name]["checked"] = checked
-   this.storeData()
+    this.state.checks[season][category][name]["checked"] = checked
+    this.storeData()
   }
   storeData = async () => {
     try {
@@ -59,64 +63,70 @@ export default class App extends React.Component {
       console.log(error.message)
     }
 
-    try{
+    try {
       await AsyncStorage.setItem('profiles', JSON.stringify(this.state.profiles))
     }
-    catch(error){ console.log(error.message)}
+    catch (error) { console.log(error.message) }
   }
   loadData = async () => {
     let profiles = null
     let currentProfile = null
     try {
       profiles = await AsyncStorage.getItem('profiles')
-      currentProfile = await AsyncStorage.getItem('currentProfile') 
+      currentProfile = await AsyncStorage.getItem('currentProfile')
     }
     catch (error) {
       console.log(error.message)
     }
     if (profiles != null) {
-      this.setState({ profiles: JSON.parse(profiles) },()=>{
+      this.setState({ profiles: JSON.parse(profiles) }, () => {
         if (currentProfile != null) {
           // remove extra quotation marks from turning to json and back
-          if(currentProfile.charAt(0) == '"') currentProfile = currentProfile.substring(1,currentProfile.length-1)
+          if (currentProfile.charAt(0) == '"') currentProfile = currentProfile.substring(1, currentProfile.length - 1)
           this.setState({ currentProfile: currentProfile, checks: this.state.profiles[currentProfile] })
         }
       })
     }
   }
-  resetChecks(){
-    for(const season in this.state.checks){
+  resetChecks() {
+    for (const season in this.state.checks) {
       for (const category in this.state.checks[season]) {
-        for (const i in this.state.checks[season][category]){
+        for (const i in this.state.checks[season][category]) {
           this.state.checks[season][category][i].checked = false
         }
       }
     }
     this.forceUpdate()
   }
-  switchProfile(){
-    this.setState({displaySwitchProfileMenu: true})
+  switchProfile() {
+    this.setState({ displaySwitchProfileMenu: true })
   }
-  addProfile(name){
-    if(name in this.state.profiles){
+  removeProfile() {
+    this.setState({ displayRemoveProfileMenu: true })
+  }
+  addProfile(name) {
+    if (name in this.state.profiles) {
       Alert.alert(
         'Profile already exists',
         'A profile with the name ' + name + ' already exists!',
         [
-          {text: 'OK'}
+          { text: 'OK' }
         ]
-        )
+      )
     }
-    else{
+    else {
       let state = Object.assign({}, this.state);    //creating copy of object
       state.profiles[name] = initChecks()
-      this.setState(state)
+      this.setState(state,()=>{
+        this.storeData()
+      })
     }
   }
-  getProfileNames(){
-    const list = []; 
-    for(const n in this.state.profiles) 
-      list.push(n); 
+  getProfileNames() {
+    const list = [];
+    for (const n in this.state.profiles) {
+      list.push(n);
+    }
     return list;
   }
   render() {
@@ -126,7 +136,7 @@ export default class App extends React.Component {
       x.push(<Picker.Item key={count} label={this.state.seasons[s]} value={this.state.seasons[s]} />)
       count++
     }
-    if(!this.state.checks) return(
+    if (!this.state.checks) return (
       <View><Text>Loading...</Text></View>
     )
     return (
@@ -142,14 +152,21 @@ export default class App extends React.Component {
               {x}
             </Picker>
 
-            <Cog resetChecks={this.resetChecks} addProfile={this.addProfile} switchProfile={this.switchProfile}/>
-            {
-            <SwitchProfileMenu names={this.getProfileNames()} 
-              display={this.state.displaySwitchProfileMenu} 
-              onClose={this.onCloseSwitchProfile}
-              selectProfile={this.selectProfile}
+            <Cog resetChecks={this.resetChecks} addProfile={this.addProfile} switchProfile={this.switchProfile}
+              removeProfile={this.removeProfile}
             />
-            }
+              <SwitchProfileMenu names={this.getProfileNames()}
+                display={this.state.displaySwitchProfileMenu}
+                onClose={this.onCloseSwitchProfile}
+                selectProfile={this.selectSwitchProfile}
+                isProfile={this.isProfile}
+                currentProfile={this.state.currentProfile}
+              />
+            <RemoveProfileMenu names={this.getProfileNames()}
+              display={this.state.displayRemoveProfileMenu}
+              onClose={this.onCloseRemoveProfile}
+              selectProfile={this.selectRemoveProfile}
+            />
 
           </View>
           <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
@@ -164,11 +181,58 @@ export default class App extends React.Component {
       </MenuProvider>
     );
   }
-  onCloseSwitchProfile(){
-    this.setState({displaySwitchProfileMenu: false})
+  onCloseSwitchProfile() {
+    this.setState({ displaySwitchProfileMenu: false })
   }
-  selectProfile(profile){
-    this.setState({profile,checks: this.state.profiles[profile]})
+  onCloseRemoveProfile() {
+    this.setState({ displayRemoveProfileMenu: false })
+  }
+  selectSwitchProfile(profile) {
+    this.setState({ currentProfile: profile, checks: this.state.profiles[profile] })
+  }
+  selectRemoveProfile(profile) {
+    const oneProfile = Object.keys(this.state.profiles).length == 1
+    if (oneProfile) {
+      Alert.alert(
+        'Cannot delete only profile',
+        'You must have at least one profile',
+        [
+          { text: 'OK' }
+        ]
+      )
+    }
+    else {
+      if (profile in this.state.profiles) {
+
+
+        Alert.alert(
+          'Confirm deleting profile',
+          'Are you sure you want to delete ' + profile + '?',
+          [
+            {
+              text: 'OK', onPress:() => {
+
+                delete this.state.profiles[profile]
+                // swap current profile
+                if (this.state.currentProfile == profile) {
+                  this.state.currentProfile = Object.keys(this.state.profiles)[0]
+                  this.state.checks = this.state.profiles[this.state.currentProfile]
+                  this.forceUpdate()
+                }
+                this.storeData()
+              },
+            },
+            {
+              text: 'Cancel'
+            }
+          ]
+        )
+
+      }
+    }
+  }
+  isProfile(profile) {
+    return this.state.profiles.hasOwnProperty(profile)
   }
 }
 
@@ -178,7 +242,7 @@ const styles = StyleSheet.create({
     marginBottom: 80
   },
   picker: {
-    width: "30%"
+    width: "35%"
   },
   bottomBanner: {
     position: "absolute",
@@ -189,3 +253,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
 });
+
+// need to add profile removing and details on items
