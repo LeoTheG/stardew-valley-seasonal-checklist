@@ -8,7 +8,7 @@ import { AdMobBanner } from 'expo';
 import { FontAwesome } from '@expo/vector-icons';
 import { MenuProvider } from 'react-native-popup-menu';
 import Cog from './components/Cog';
-import { initChecks } from './check-init.js'
+import { initChecks, checkDuplicates, markDuplicate } from './check-init.js'
 import SwitchProfileMenu from './components/SwitchProfileMenu';
 import RemoveProfileMenu from './components/RemoveProfileMenu';
 
@@ -21,6 +21,7 @@ export default class App extends React.Component {
       seasons: ["spring", "summer", "fall", "winter", "any"],
       season: "spring",
       profiles: { 'Default': initChecks() },
+      //duplicates: getDuplicates(),
       currentProfile: 'Default',
       checks: initChecks(),
       displaySwitchProfileMenu: false,
@@ -42,14 +43,29 @@ export default class App extends React.Component {
     this.selectRemoveProfile = this.selectRemoveProfile.bind(this)
     this.isProfile = this.isProfile.bind(this)
 
-    this.loadData()
+    this.loadData().then(()=>{
+    })
   }
   // used for propagating up changes in checks
   check(season, category, name, checked) {
+    // fix for changing Red Mushroom=>Red Mushroom x2
+    if(name == 'Red Mushroom'){
+      let val = this.state.checks['summer'][category][name]
+      this.state.checks['summer'][category]['Red Mushroom x2'] = val
+      delete this.state.checks['summer'][category][name]
+
+
+      val = this.state.checks['fall'][category][name]
+      this.state.checks['fall'][category]['Red Mushroom x2'] = val
+      delete this.state.checks['fall'][category][name]
+
+      name = 'Red Mushroom x2'
+    } 
     this.state.checks[season][category][name]["checked"] = checked
-    this.storeData()
+    markDuplicate(this.state.checks,name,checked).then(this.storeData())
   }
   storeData = async () => {
+    console.log("saving")
     if(!this.state.setVersion){
       try{
         await AsyncStorage.setItem('version', this.state.version)
@@ -75,6 +91,7 @@ export default class App extends React.Component {
     try {
       profiles = await AsyncStorage.getItem('profiles')
       currentProfile = await AsyncStorage.getItem('currentProfile')
+      checkedDuplicates = await AsyncStorage.getItem('checkedDuplicates')
     }
     catch (error) {
       console.log(error.message)
@@ -88,6 +105,19 @@ export default class App extends React.Component {
         }
       })
     }
+    // for checking profiles before update that marks duplicates
+    if(checkedDuplicates == null){
+      console.log("have not checked duplicates before")
+      for(const profile in this.state.profiles){
+        checkDuplicates(this.state.profiles[profile])
+      }
+      // save checkedDuplicates
+      try{
+        await AsyncStorage.setItem('checkedDuplicates', 'true')
+      }
+      catch(error){ console.log(error.message) }
+    }
+    else console.log("already checked duplicates")
   }
   resetChecks() {
     for (const season in this.state.checks) {
@@ -188,8 +218,8 @@ export default class App extends React.Component {
           <Season season={this.state.season} checks={this.state.checks[this.state.season]} check={this.check} />
           <AdMobBanner style={styles.bottomBanner}
             bannerSize="fullBanner"
-            //adUnitID="ca-app-pub-2964072979069071/2820899412"
-            adUnitID="ca-app-pub-3940256099942544/6300978111"
+            adUnitID="ca-app-pub-2964072979069071/2820899412"
+            //adUnitID="ca-app-pub-3940256099942544/6300978111"
             testDeviceID="EMULATOR"
             onDidFailToReceiveAdWithError={this.bannerError}
           />
@@ -269,3 +299,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
 });
+
+//todo: add bundle button which takes you to screen with all bundles w/ name then expand button and see checked off bundle items
+// also make checking off items check off duplicate items in different seasons

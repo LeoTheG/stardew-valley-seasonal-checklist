@@ -12,15 +12,15 @@ export default class Check extends Component {
             expanded: false,
             check: props.check || function(){},
             image: props.image,
+            displayLastChance: props.displayLastChance
         }
         this.press = this.press.bind(this)
         this.pressExpand = this.pressExpand.bind(this)
     }
     componentWillReceiveProps(props){
-        //console.log(this.state.name + " got props.checked = " + props.checked)
-        if(props.name != this.state.name || props.checked != this.state.checked){
+        if(props.name != this.state.name || props.checked != this.state.checked || props.displayLastChance != this.state.displayLastChance){
             this.setState({name: props.name, expanse: props.expanse, checked: props.checked, expanded: false,
-            image: props.image})
+            image: props.image, displayLastChance: props.displayLastChance})
         }
     }
     press() {
@@ -37,7 +37,8 @@ export default class Check extends Component {
         if (this.state.expanded) {
             x.push(<Text key={"location-"+count}>Location: {this.state.expanse.location}</Text>)
             x.push(<Text key={"bundle-"+count}>Bundle: {this.state.expanse.bundle}</Text>)
-            x.push(<Text key={"lastChance-"+count}>{this.state.expanse.lastChance ? "Last chance" : "Not last chance"}</Text>)
+            if(this.state.displayLastChance)
+                x.push(<Text key={"lastChance-"+count}>{this.state.expanse.lastChance ? "Last chance" : "Not last chance"}</Text>)
             if(this.state.expanse.details)
                 x.push(<Text key={"details-"+count}>Details: {this.state.expanse.details}</Text>)
             count++

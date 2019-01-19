@@ -1,7 +1,128 @@
-export const initChecks = ()=>{
+export const initChecks = () => {
     const x = JSON.stringify(checks)
     return JSON.parse(x)
+
 }
+const categories = {
+    fishing: 'fishing',
+    foraging: 'foraging',
+    farming: 'foraging',
+}
+const seasons = {
+    spring: 'spring',
+    summer: 'summer',
+    fall: 'fall',
+    winter: 'winter'
+}
+// mark all duplicates in every season already checked
+export function checkDuplicates(checks) {
+    for (const season in checks) {
+        for (const category in checks[season]) {
+            for (const itemName in checks[season][category]) {
+                const checked = checks[season][category][itemName].checked || false
+                // duplicates exist and is checked
+                if (itemName in duplicates && checked) {
+                    for (const s in duplicates[itemName].seasons) {
+                        const seasonName = duplicates[itemName].seasons[s]
+                        checks[seasonName][category][itemName].checked = true
+                    }
+                }
+            }
+        }
+    }
+}
+// check if duplicate, if so mark all entries of item across seasons
+export function markDuplicate(checks, itemName, checked) {
+    return new Promise((resolve, reject) => {
+        if (itemName in duplicates) {
+            const category = duplicates[itemName].category
+            for (const season in duplicates[itemName].seasons) {
+                const seasonName = duplicates[itemName].seasons[season]
+                checks[seasonName][category][itemName].checked = checked
+                console.log("marked duplicate " + itemName + " in season " + seasonName)
+            }
+            resolve()
+        }
+    })
+}
+const duplicates = {
+    'Sunfish': {
+        category: categories.fishing,
+        seasons: [seasons.spring, seasons.summer]
+    },
+    'Catfish': {
+        category: categories.fishing,
+        seasons: [seasons.spring, seasons.summer, seasons.fall],
+    },
+    'Shad': {
+        category: categories.fishing,
+        seasons: [seasons.spring, seasons.summer, seasons.fall]
+    },
+    'Red Mushroom x2': {
+        category: categories.foraging,
+        seasons: [seasons.summer, seasons.fall]
+    },
+    'Common Mushroom': {
+        category: categories.foraging,
+        seasons: [seasons.spring, seasons.fall]
+    },
+    'Corn(Gold Quality) x5': {
+        category: categories.farming,
+        seasons: [seasons.summer, seasons.fall]
+    },
+    'Sunflower': {
+        category: categories.farming,
+        seasons: [seasons.summer, seasons.fall]
+    },
+    'Wheat x10': {
+        category: categories.farming,
+        seasons: [seasons.summer, seasons.fall]
+    },
+    'Red Snapper': {
+        category: categories.fishing,
+        seasons: [seasons.summer, seasons.fall]
+    },
+    'Eel': {
+        category: categories.fishing,
+        seasons: [seasons.spring, seasons.fall]
+    },
+    'Tilapia': {
+        category: categories.fishing,
+        seasons: [seasons.summer, seasons.fall]
+    },
+    'Sardine': {
+        category: categories.fishing,
+        seasons: [seasons.spring, seasons.fall, seasons.winter]
+    },
+    'Tiger Trout': {
+        category: categories.fishing,
+        seasons: [seasons.fall, seasons.winter]
+    },
+    'Sturgeon': {
+        category: categories.fishing,
+        seasons: [seasons.summer, seasons.winter],
+    },
+    'Tuna': {
+        category: categories.fishing,
+        seasons: [seasons.summer, seasons.winter]
+    }
+}
+/*
+export const getDuplicates = () => {
+    const names = {}
+    const duplicates = []
+    for(const season in checks){
+        for(const category in checks[season]){
+            for(const itemName in checks[season][category]){
+                //const item = checks[season][category][itemName]
+                if(!names[itemName]) names[itemName] = itemName
+                else duplicates.push(itemName)
+            }
+        }
+    }
+    console.log("duplicates: " + duplicates)
+}
+*/
 const checks = {
     spring: {
         foraging: {
@@ -208,7 +329,7 @@ const checks = {
                 },
                 image: require('./assets/Fiddlehead_Fern.png')
             },
-            'Red Mushroom': {
+            'Red Mushroom x2': {
                 expanse: {
                     location: 'Secret Woods',
                     bundle: 'Exotic Foraging',
@@ -423,7 +544,7 @@ const checks = {
                 },
                 image: require('./assets/Blackberry.png')
             },
-            'Red Mushroom': {
+            'Red Mushroom x2': {
                 expanse: {
                     location: 'Secret Woods',
                     bundle: 'Exotic Foraging',
@@ -1218,3 +1339,292 @@ const checks = {
         }
     }
 }
+/**
+/* @param {string} name - the name to turn into image url
+*/
+function convertNameToPath(name) {
+    if (name == 'Parsnip(Gold Quality) x5')
+        return 'Gold_Parsnip.png'
+    else if (name == 'Melon (Gold Quality) x5')
+        return 'Gold_Melon.png'
+    else if (name == 'Corn (Gold Quality) x5')
+        return 'Gold_Corn.png'
+    else if (name == 'Pumpkin (Gold Quality) x5')
+        return 'Gold_Pumpkin.png'
+    //_x#
+    let lastSpacePos = -1
+    for (const i = name.length - 1; i >= 0; i--) {
+        if (name.charAt(i) == ' ') {
+            lastSpacePos = i
+            break
+        }
+    }
+    name = name.substring(0, lastSpacePos)
+    // switch spaces with underscores
+    name = name.split(" ").join("_")
+    name += '.png'
+    return name
+}
+/**
+/* @param {string} name - item to mark in bundle
+*/
+export function markBundle(name){
+    for(const bundle in x[name]){
+        if(!bundles[bundle].items)
+            bundles[bundle].items = {}
+        if(!bundles[bundle].items[name])
+            bundles[bundle].items[name] = {
+                path: convertNameToPath(name)
+            }
+        bundles[bundle].items[name].checked = !bundles[bundle].items[name].checked
+        console.log("marked item " + name + " in bundle " + bundle)
+    }
+}
+export const getBundles = () => {return bundles}
+/**
+ * 
+/* @param {Object} checks
+*/
+export function checkBundles(checks) {
+    for (const season in checks) {
+        for (const category in checks[season]) {
+            for (const itemName in checks[season][category]) {
+                // if item is checked
+                if (checks[season][category][itemName].checked) {
+                    for (const bundle in x[itemName]) {
+                        // place in bundle
+                        if (!bundles[bundle].items)
+                            bundles[bundle].items = {}
+                        if (!bundles[bundle].items[itemName])
+                            bundles[bundle].items[itemName] = {
+                                path: convertNameToPath(itemName)
+                            }
+                        bundles[bundle].items[itemName].checked = true
+                    }
+                }
+            }
+        }
+    }
+}
+const bundles = {
+    'Spring Foraging': {
+        amountNeeded: 4
+    },
+    'Summer Foraging': {
+        amountNeeded: 3
+    },
+    'Fall Foraging': {
+        amountNeeded: 4
+    },
+    'Winter Foraging': {
+        amountNeeded: 3
+    },
+    'Construction': {
+        amountNeeded: 4
+    },
+    'Exotic': {
+        amountNeeded: 5
+    },
+    'Spring Crops': {
+        amountNeeded: 4
+    },
+    'Summer Crops': {
+        amountNeeded: 4
+    },
+    'Fall Crops': {
+        amountNeeded: 4
+    },
+    'Quality Crops': {
+        amountNeeded: 3
+    },
+    'Animal': {
+        amountNeeded: 5
+    },
+    'Artisan': {
+        amountNeeded: 6
+    },
+    'River Fish': {
+        amountNeeded: 4
+    },
+    'Lake Fish': {
+        amountNeeded: 4
+    },
+    'Ocean Fish': {
+        amountNeeded: 4
+    },
+    'Night Fishing': {
+        amountNeeded: 3
+    },
+    'Crab Pot': {
+        amountNeeded: 5
+    },
+    'Specialty Fish': {
+        amountNeeded: 4
+    },
+    'Blacksmith\'s': {
+        amountNeeded: 3
+    },
+    'Geologist\'s': {
+        amountNeeded: 4
+    },
+    'Adventurer\'s': {
+        amountNeeded: 2
+    },
+    'Chef\'s': {
+        amountNeeded: 6
+    },
+    'Dye': {
+        amountNeeded: 6
+    },
+    'Field Research': {
+        amountNeeded: 4
+    },
+    'Fodder': {
+        amountNeeded: 3
+    },
+    'Enchanter\'s': {
+        amountNeeded: 4
+    },
+    '2,500': {
+        amountNeeded: 1
+    },
+    '5,000': {
+        amountNeeded: 1
+    },
+    '10,000': {
+        amountNeeded: 1
+    },
+    '25,000': {
+        amountNeeded: 1
+    },
+
+}
+const x = {
+    'Wild Horseradish': ['Spring Foraging'],
+    'Daffodil': ['Spring Foraging'],
+    'Leek': ['Spring Foraging'],
+    'Dandelion': ['Spring Foraging'],
+    'Grape': ['Summer Foraging'],
+    'Spice Berry': ['Summer Foraging'],
+    'Sweet Pea': ['Summer Foraging'],
+    'Common Mushroom': ['Fall Foraging'],
+    'Wild Plum': ['Fall Foraging'],
+    'Hazelnut': ['Fall Foraging'],
+    'Blackberry': ['Fall Foraging'],
+    'Winter Root': ['Winter Foraging'],
+    'Crystal Fruit': ['Winter Foraging'],
+    'Snow Yam': ['Winter Foraging'],
+    'Crocus': ['Winter Foraging'],
+    'Wood x198': ['Construction'],
+    'Stone x99': ['Construction'],
+    'Hardwood x10': ['Construction'],
+    'Coconut': ['Exotic Foraging'],
+    'Cactus Fruit': ['Exotic Foraging'],
+    'Cave Carrot': ['Exotic Foraging'],
+    'Red Mushroom x2': ['Exotic Foraging', 'Dye Bundle'],
+    'Purple Mushroom': ['Exotic Foraging', 'Field Research'],
+    'Maple Syrup': ['Exotic Foraging'],
+    'Oak Resin': ['Exotic Foraging'],
+    'Pine Tar': ['Exotic Foraging'],
+    'Morel': ['Exotic Foraging'],
+    'Parsnip': ['Spring Crops'],
+    'Green Bean': ['Spring Crops'],
+    'Cauliflower': ['Spring Crops'],
+    'Potato': ['Spring Crops'],
+    'Tomato': ['Summer Crops'],
+    'Hot Pepper': ['Summer Crops'],
+    'Blueberry': ['Summer Crops'],
+    'Melon': ['Summer Crops'],
+    'Corn': ['Fall Crops'],
+    'Eggplant': ['Fall Crops'],
+    'Pumpkin': ['Fall Crops'],
+    'Yam': ['Fall Crops'],
+    'Parsnip(Gold Quality) x5': ['Quality Crops'],
+    'Melon (Gold Quality) x5': ['Quality Crops'],
+    'Pumpkin (Gold Quality) x5': ['Quality Crops'],
+    'Corn(Gold Quality) x5': ['Quality Crops'],
+    'Large Milk': ['Animal'],
+    'Large Egg (Brown)': ['Animal'],
+    'Large Egg (White)': ['Animal'],
+    'Large Goat Milk': ['Animal'],
+    'Wool': ['Animal'],
+    'Duck Egg': ['Animal'],
+    'Truffle Oil': ['Artisan'],
+    'Cloth': ['Artisan'],
+    'Goat Cheese': ['Artisan'],
+    'Cheese': ['Artisan'],
+    'Honey': ['Artisan'],
+    'Jelly': ['Artisan'],
+    'Apple x4': ['Artisan', 'Fodder'],
+    'Apricot': ['Artisan'],
+    'Orange': ['Artisan'],
+    'Peach': ['Artisan'],
+    'Pomegranate': ['Artisan'],
+    'Cherry': ['Artisan'],
+    'Sunfish': ['River Fish'],
+    'Catfish': ['River Fish'],
+    'Shad': ['River Fish'],
+    'Tiger Trout': ['River Fish'],
+    'Largemouth Bass': ['Lake Fish'],
+    'Carp': ['Lake Fish'],
+    'Bullhead': ['Lake Fish'],
+    'Sturgeon': ['Lake Fish'],
+    'Sardine': ['Ocean Fish'],
+    'Tuna': ['Ocean Fish'],
+    'Red Snapper': ['Ocean Fish'],
+    'Tilapia': ['Ocean Fish'],
+    'Walleye': ['Night Fishing'],
+    'Bream': ['Night Fishing'],
+    'Eel': ['Night Fishing'],
+    'Lobster': ['Crab Pot'],
+    'Crayfish': ['Crab Pot'],
+    'Crab': ['Crab Pot'],
+    'Cockle': ['Crab Pot'],
+    'Mussel': ['Crab Pot'],
+    'Shrimp': ['Crab Pot'],
+    'Snail': ['Crab Pot'],
+    'Periwinkle': ['Crab Pot'],
+    'Oyster': ['Crab Pot'],
+    'Clam': ['Crab Pot'],
+    'Pufferfish': ['Specialty Fish'],
+    'Ghostfish': ['Specialty Fish'],
+    'Sandfish': ['Specialty Fish'],
+    'Woodskip': ['Specialty Fish'],
+    'Copper Bar': ['Blacksmith\'s'],
+    'Iron Bar': ['Blacksmith\'s'],
+    'Gold Bar': ['Blacksmith\'s'],
+    'Quartz': ['Geologist\'s'],
+    'Earth Crystal': ['Geologist\'s'],
+    'Frozen Tear': ['Geologist\'s'],
+    'Fire Quartz': ['Geologist\'s'],
+    'Slime x99': ['Adventurer\'s'],
+    'Bat Wing x10': ['Adventurer\'s'],
+    'Solar Essence': ['Adventurer\'s'],
+    'Void Essence': ['Adventurer\'s'],
+    'Maple Syrup': ['Chef\'s'],
+    'Fiddlehead Fern': ['Chef\'s'],
+    'Truffle': ['Chef\'s'],
+    'Poppy': ['Chef\'s'],
+    'Maki Roll': ['Chef\'s'],
+    'Fried Egg': ['Chef\'s'],
+    'Sea Urchin': ['Dye'],
+    'Sunflower': ['Dye'],
+    'Duck Feather': ['Dye'],
+    'Aquamarine': ['Dye'],
+    'Red Cabbage': ['Dye'],
+    'Nautilus Shell': ['Field Research'],
+    'Chub': ['Field Research'],
+    'Frozen Geode': ['Field Research'],
+    'Wheat x10': ['Fodder'],
+    'Hay x10': ['Fodder'],
+    'Oak Resin': ['Enchanter\'s'],
+    'Wine': ['Enchanter\'s'],
+    'Rabbit\'s Foot': ['Enchanter\'s'],
+    'Pomegranate': ['Enchanter\'s'],
+    'Money x2.5k': ['2,500'],
+    'Money x5k': ['5,000'],
+    'Money x10k': ['10,000'],
+    'Money x25k': ['25,000'],
+}
+
+//todo: turn red mushroom fix into a "patch" for those w/ current version < new version

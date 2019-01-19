@@ -14,8 +14,8 @@ export default class CheckList extends Component {
         this.check = this.check.bind(this)
     }
     componentWillReceiveProps(props){
-        if(props.checks != this.state.checks){
-            this.setState({category: props.category, checks: props.checks})
+        if(props.checks != this.state.checks || props.season != this.state.season){
+            this.setState({category: props.category, checks: props.checks, season: props.season})
         }
     }
     check(name, checked){
@@ -31,6 +31,7 @@ export default class CheckList extends Component {
                     checked={this.state.checks[c].checked}
                     image={this.state.checks[c].image}
                     check={this.check} 
+                    displayLastChance={this.state.season != 'any'}
                     />)
                 count++
             }
