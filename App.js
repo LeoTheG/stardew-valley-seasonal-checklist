@@ -1,4 +1,21 @@
 import React from 'react';
+import { createStore } from 'redux';
+import stardewApp from './reducers'
+
+const store = createStore(stardewApp)
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <ConnectedAppScreen />
+      </Provider>
+    )
+  }
+}
+
+/*
+import React from 'react';
 import {
   StyleSheet, View,
   Picker, AsyncStorage, Alert, Text
@@ -60,7 +77,7 @@ export default class App extends React.Component {
       delete this.state.checks['fall'][category][name]
 
       name = 'Red Mushroom x2'
-    } 
+    }
     this.state.checks[season][category][name]["checked"] = checked
     markDuplicate(this.state.checks,name,checked).then(this.storeData())
   }
@@ -302,3 +319,4 @@ const styles = StyleSheet.create({
 
 //todo: add bundle button which takes you to screen with all bundles w/ name then expand button and see checked off bundle items
 // also make checking off items check off duplicate items in different seasons
+*/

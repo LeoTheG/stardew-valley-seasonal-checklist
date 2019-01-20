@@ -12,7 +12,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-dialog-input": "^1.0.7",
     "react-native-elements": "^0.19.1",
-    "react-native-popup-menu": "^0.14.2"
+    "react-native-popup-menu": "^0.14.2",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
