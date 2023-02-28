@@ -11,7 +11,7 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-dialog-input": "^1.0.7",
-    "react-native-elements": "^0.19.1",
+    "react-native-elements": "^3.4.3",
     "react-native-popup-menu": "^0.14.2"
   },
   "devDependencies": {
